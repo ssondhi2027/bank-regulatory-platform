@@ -1,0 +1,39 @@
+# Secrets — never commit these
+.env
+*.json
+!package.json
+!package-lock.json
+!**/dagster_home/**/*.json
+service_account*.json
+gcp-key*.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Landing zone — content-addressed, local only
+data/raw/
+
+# Dagster
+orchestration/dagster_home/
+.dagster/
+
+# Node / Evidence
+node_modules/
+dashboards/evidence/.evidence/
+
+# OS / editor
+.DS_Store
+.vscode/
+*.log

@@ -1,0 +1,538 @@
+version: 1
+generated_at: '2026-08-05T12:43:18.161235+00:00'
+notes:
+- 'Consumed columns are contract-critical: a rename or removal is a hard failure. Non-consumed columns
+  (including French-language duplicates) drift with a warning only.'
+- Amount units are thousands of CAD and are IMPLICIT — the source carries no units column. Do not remove
+  this note.
+- Subtotal identification is NOT derivable from this file. It comes from the OSFI Data Dictionary hierarchy
+  seed, keyed on the line-item code. See docs/known_data_issues.md.
+- The natural key includes a derived variant_seq column (not a raw source column -- see the 'derived'
+  entry under each return's columns list), computed by extract/keys.py::compute_variant_seq and ordered
+  by (return_title, label_as_filed) per ADR-0002 -- NOT by label alone (ADR-0001's original clause). It
+  disambiguates the same line item reported under two return definitions/accounting bases (e.g. IAS 39
+  vs IFRS 9 wording). Must be computed identically in stg_osfi__filings via the same shared function.
+  See docs/decisions/ADR-0001-natural-key.md, docs/decisions/ADR-0002-variant-ordering-and-quarantine.md,
+  and seeds/seed_data_point_variants.csv.
+- seeds/seed_quarantine.csv excludes Id 28017 at 2010-12-31 (P3 and E3) entirely -- every line item in
+  that institution-period is duplicated with no distinguishing column, and row order was proven internally
+  inconsistent across codes. No variant_seq pairing is trustworthy there. See docs/decisions/ADR-0002-variant-ordering-and-quarantine.md.
+returns:
+  M4:
+    source_file: M4.csv
+    encoding: utf-8
+    row_count_baseline: 1555044
+    row_count_floor: 1477291
+    column_count: 15
+    natural_key:
+      columns:
+      - Id
+      - Calendar Year/Année civile
+      - Calendar Month/Mois civil
+      - Data Point Address/Adresse de point de donnée
+      - variant_seq
+      verified_unique: true
+      null_key_rows: 0
+    amount:
+      column: Measure Value/Valeur de mesure
+      units: thousands_cad
+      implicit_units: true
+      known_non_numeric_tokens: []
+      null_rate: 0.0
+      min: -465483974.0
+      max: 10158841372.0
+      has_negatives: true
+    columns:
+    - name: Calendar Year/Année civile
+      normalized: calendar_year_annee_civile
+      position: 0
+      dtype: integer
+      nullable: false
+      distinct_count: 31
+      consumed: true
+    - name: Calendar Month/Mois civil
+      normalized: calendar_month_mois_civil
+      position: 1
+      dtype: date
+      nullable: false
+      distinct_count: 366
+      consumed: true
+    - name: Id
+      normalized: id
+      position: 2
+      dtype: integer
+      nullable: false
+      distinct_count: 112
+      consumed: true
+    - name: Total All Banks/Total Industry Groups/FIs
+      normalized: total_all_banks_total_industry_groups_fis
+      position: 3
+      dtype: string
+      nullable: false
+      distinct_count: 147
+      consumed: false
+    - name: Total Banques/Total des groupe sectoriel/IFFs
+      normalized: total_banques_total_des_groupe_sectoriel_iffs
+      position: 4
+      dtype: string
+      nullable: false
+      distinct_count: 149
+      consumed: false
+    - name: Industry Group
+      normalized: industry_group
+      position: 5
+      dtype: string
+      nullable: false
+      distinct_count: 4
+      consumed: false
+      allowed_values:
+      - All Banks
+      - Domestic Banks
+      - Foreign Bank Subsidiaries
+      - Foreign Bank Subsidiaries Banks
+    - name: Groupe Sectoriel
+      normalized: groupe_sectoriel
+      position: 6
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - Banques nationales
+      - Filiales de banques étrangères
+      - Toutes les banques
+    - name: Return/Relevé
+      normalized: return_releve
+      position: 7
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - M4
+    - name: Return Title
+      normalized: return_title
+      position: 8
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: true
+      allowed_values:
+      - M4 - Consolidated Balance Sheet
+    - name: Titre du relevé
+      normalized: titre_du_releve
+      position: 9
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - M4 - Bilan consolidé
+    - name: Data Point Address/Adresse de point de donnée
+      normalized: data_point_address_adresse_de_point_de_donnee
+      position: 10
+      dtype: integer
+      nullable: false
+      distinct_count: 290
+      consumed: true
+    - name: Data Point Address Label
+      normalized: data_point_address_label
+      position: 11
+      dtype: string
+      nullable: false
+      distinct_count: 338
+      consumed: true
+    - name: Libellé de l'adresse du point de données
+      normalized: libelle_de_l_adresse_du_point_de_donnees
+      position: 12
+      dtype: string
+      nullable: false
+      distinct_count: 338
+      consumed: false
+    - name: FI Inactive Date/Date d'inactivité IFF
+      normalized: fi_inactive_date_date_d_inactivite_iff
+      position: 13
+      dtype: date
+      nullable: false
+      distinct_count: 4
+      consumed: false
+      allowed_values:
+      - '1996-01-12'
+      - '1996-08-30'
+      - '2022-01-26'
+      - '9999-12-31'
+    - name: Measure Value/Valeur de mesure
+      normalized: measure_value_valeur_de_mesure
+      position: 14
+      dtype: numeric
+      nullable: false
+      distinct_count: 559353
+      consumed: true
+    - name: variant_seq
+      normalized: variant_seq
+      position: null
+      dtype: integer
+      nullable: false
+      distinct_count: null
+      consumed: false
+      derived: true
+      derivation: row_number() over (partition by institution_id, return_code, reporting_period_end, line_item_code
+        order by return_title, data_point_label_as_filed) - 1
+    variant_ordering:
+      base_key:
+      - Id
+      - Calendar Year/Année civile
+      - Calendar Month/Mois civil
+      - Data Point Address/Adresse de point de donnée
+      return_title_column: Return Title
+      label_column: Data Point Address Label
+  P3:
+    source_file: P3.csv
+    encoding: utf-8
+    row_count_baseline: 352564
+    row_count_floor: 334935
+    column_count: 16
+    natural_key:
+      columns:
+      - Id
+      - Fiscal Year/Année fiscale
+      - Fiscal Quarter
+      - Data Point Address/Adresse de point de donnée
+      - variant_seq
+      verified_unique: true
+      null_key_rows: 0
+    amount:
+      column: Measure Value/Valeur de mesure
+      units: thousands_cad
+      implicit_units: true
+      known_non_numeric_tokens: []
+      null_rate: 0.036566
+      min: -20316470.0
+      max: 426807895.0
+      has_negatives: true
+    columns:
+    - name: Fiscal Year/Année fiscale
+      normalized: fiscal_year_annee_fiscale
+      position: 0
+      dtype: integer
+      nullable: false
+      distinct_count: 31
+      consumed: true
+    - name: Fiscal Quarter
+      normalized: fiscal_quarter
+      position: 1
+      dtype: string
+      nullable: false
+      distinct_count: 122
+      consumed: true
+    - name: Trimestre fiscal
+      normalized: trimestre_fiscal
+      position: 2
+      dtype: string
+      nullable: false
+      distinct_count: 122
+      consumed: false
+    - name: Id
+      normalized: id
+      position: 3
+      dtype: integer
+      nullable: false
+      distinct_count: 110
+      consumed: true
+    - name: Total All Banks/Total Industry Groups/FIs
+      normalized: total_all_banks_total_industry_groups_fis
+      position: 4
+      dtype: string
+      nullable: false
+      distinct_count: 144
+      consumed: false
+    - name: Total Banques/Total des groupe sectoriel/IFFs
+      normalized: total_banques_total_des_groupe_sectoriel_iffs
+      position: 5
+      dtype: string
+      nullable: false
+      distinct_count: 146
+      consumed: false
+    - name: Industry Group
+      normalized: industry_group
+      position: 6
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - All Banks
+      - Domestic Banks
+      - Foreign Bank Subsidiaries
+    - name: Groupe Sectoriel
+      normalized: groupe_sectoriel
+      position: 7
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - Banques nationales
+      - Filiales de banques étrangères
+      - Toutes les banques
+    - name: Return/Relevé
+      normalized: return_releve
+      position: 8
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - P3
+    - name: Return Title
+      normalized: return_title
+      position: 9
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: true
+      allowed_values:
+      - P3 - Consolid Statement Of Income, Retained Earnings & AOCI
+      - P3 - Consolidated Statement Of Income
+      - P3 - Consolidated Statement Of Income, Retained Earnings & AOCI
+    - name: Titre du relevé
+      normalized: titre_du_releve
+      position: 10
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - P3 - État consolidés des revenus, bénéfices non repartis et
+      - P3 - État consolidés des revenus, bénéfices non repartis et AERE
+      - P3 - État des revenus
+    - name: Data Point Address/Adresse de point de donnée
+      normalized: data_point_address_adresse_de_point_de_donnee
+      position: 11
+      dtype: string
+      nullable: false
+      distinct_count: 125
+      consumed: true
+    - name: Data Point Address Label
+      normalized: data_point_address_label
+      position: 12
+      dtype: string
+      nullable: false
+      distinct_count: 127
+      consumed: true
+    - name: Libellé de l'adresse du point de données
+      normalized: libelle_de_l_adresse_du_point_de_donnees
+      position: 13
+      dtype: string
+      nullable: false
+      distinct_count: 129
+      consumed: false
+    - name: FI Inactive Date/Date d'inactivité IFF
+      normalized: fi_inactive_date_date_d_inactivite_iff
+      position: 14
+      dtype: date
+      nullable: false
+      distinct_count: 2
+      consumed: false
+      allowed_values:
+      - '1996-01-12'
+      - '9999-12-31'
+    - name: Measure Value/Valeur de mesure
+      normalized: measure_value_valeur_de_mesure
+      position: 15
+      dtype: numeric
+      nullable: true
+      distinct_count: 116510
+      consumed: true
+    - name: variant_seq
+      normalized: variant_seq
+      position: null
+      dtype: integer
+      nullable: false
+      distinct_count: null
+      consumed: false
+      derived: true
+      derivation: row_number() over (partition by institution_id, return_code, reporting_period_end, line_item_code
+        order by return_title, data_point_label_as_filed) - 1
+    variant_ordering:
+      base_key:
+      - Id
+      - Fiscal Year/Année fiscale
+      - Fiscal Quarter
+      - Data Point Address/Adresse de point de donnée
+      return_title_column: Return Title
+      label_column: Data Point Address Label
+  E3:
+    source_file: E3.csv
+    encoding: utf-8
+    row_count_baseline: 143354
+    row_count_floor: 136186
+    column_count: 16
+    natural_key:
+      columns:
+      - Id
+      - Fiscal Year/Année fiscale
+      - Fiscal Quarter
+      - Data Point Address/Adresse de point de donnée
+      - variant_seq
+      verified_unique: true
+      null_key_rows: 0
+    amount:
+      column: Measure Value/Valeur de mesure
+      units: thousands_cad
+      implicit_units: true
+      known_non_numeric_tokens: []
+      null_rate: 0.0
+      min: -1689972.0
+      max: 6096831792.0
+      has_negatives: true
+    columns:
+    - name: Fiscal Year/Année fiscale
+      normalized: fiscal_year_annee_fiscale
+      position: 0
+      dtype: integer
+      nullable: false
+      distinct_count: 31
+      consumed: true
+    - name: Fiscal Quarter
+      normalized: fiscal_quarter
+      position: 1
+      dtype: string
+      nullable: false
+      distinct_count: 122
+      consumed: true
+    - name: Trimestre fiscal
+      normalized: trimestre_fiscal
+      position: 2
+      dtype: string
+      nullable: false
+      distinct_count: 122
+      consumed: false
+    - name: Id
+      normalized: id
+      position: 3
+      dtype: integer
+      nullable: false
+      distinct_count: 103
+      consumed: true
+    - name: Total All Banks/Total Industry Groups/FIs
+      normalized: total_all_banks_total_industry_groups_fis
+      position: 4
+      dtype: string
+      nullable: false
+      distinct_count: 136
+      consumed: false
+    - name: Total Banques/Total des groupe sectoriel/IFFs
+      normalized: total_banques_total_des_groupe_sectoriel_iffs
+      position: 5
+      dtype: string
+      nullable: false
+      distinct_count: 138
+      consumed: false
+    - name: Industry Group
+      normalized: industry_group
+      position: 6
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - All Banks
+      - Domestic Banks
+      - Foreign Bank Subsidiaries
+    - name: Groupe Sectoriel
+      normalized: groupe_sectoriel
+      position: 7
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - Banques nationales
+      - Filiales de banques étrangères
+      - Toutes les banques
+    - name: Return/Relevé
+      normalized: return_releve
+      position: 8
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - E3
+    - name: Return Title
+      normalized: return_title
+      position: 9
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: true
+      allowed_values:
+      - E3 - Impaired Assets
+      - E3 - Return Of Impaired Assets
+      - E3 - Return of Allowances for Expected Credit Losses
+    - name: Titre du relevé
+      normalized: titre_du_releve
+      position: 10
+      dtype: string
+      nullable: false
+      distinct_count: 2
+      consumed: false
+      allowed_values:
+      - E3 - Créances douteuses
+      - E3 - Relevé Des Provisions Pour Pertes De Crédit Attendues
+    - name: Data Point Address/Adresse de point de donnée
+      normalized: data_point_address_adresse_de_point_de_donnee
+      position: 11
+      dtype: integer
+      nullable: false
+      distinct_count: 191
+      consumed: true
+    - name: Data Point Address Label
+      normalized: data_point_address_label
+      position: 12
+      dtype: string
+      nullable: false
+      distinct_count: 200
+      consumed: true
+    - name: Libellé de l'adresse du point de données
+      normalized: libelle_de_l_adresse_du_point_de_donnees
+      position: 13
+      dtype: string
+      nullable: false
+      distinct_count: 191
+      consumed: false
+    - name: FI Inactive Date/Date d'inactivité IFF
+      normalized: fi_inactive_date_date_d_inactivite_iff
+      position: 14
+      dtype: date
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - '9999-12-31'
+    - name: Measure Value/Valeur de mesure
+      normalized: measure_value_valeur_de_mesure
+      position: 15
+      dtype: numeric
+      nullable: false
+      distinct_count: 56065
+      consumed: true
+    - name: variant_seq
+      normalized: variant_seq
+      position: null
+      dtype: integer
+      nullable: false
+      distinct_count: null
+      consumed: false
+      derived: true
+      derivation: row_number() over (partition by institution_id, return_code, reporting_period_end, line_item_code
+        order by return_title, data_point_label_as_filed) - 1
+    variant_ordering:
+      base_key:
+      - Id
+      - Fiscal Year/Année fiscale
+      - Fiscal Quarter
+      - Data Point Address/Adresse de point de donnée
+      return_title_column: Return Title
+      label_column: Data Point Address Label

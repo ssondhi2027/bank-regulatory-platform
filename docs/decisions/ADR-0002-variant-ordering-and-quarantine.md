@@ -1,9 +1,9 @@
 # ADR-0002: Variant ordering must use (return_title, label), and one
 # institution-period is quarantined rather than resolved
 
-**Status:** Accepted
+**Status:** Accepted, amended 2026-08-21 (see Addendum)
 **Date:** 2026-08-05
-**Phase:** 2 (source profiling)
+**Phase:** 2 (source profiling); addendum from Phase 5 (snapshot build)
 **Supersedes:** ADR-0001's ordering clause (`order by data_point_label_as_filed`)
 
 ---
@@ -189,3 +189,82 @@ merely informational. `schema.yml` is regenerated accordingly.
   amount.
 - See `docs/known_data_issues.md` for the quarantine entry and the
   crossed-pairing proof preserved verbatim.
+
+---
+
+## Addendum (2026-08-21, Phase 5): quarantine must be excluded upstream of the snapshot, not just marts
+
+### What was wrong
+
+Decision #2 above scoped the `Id 28017` quarantine to "excluded from marts,"
+on the assumption that staging and the snapshot could safely retain both
+quarantined rows — the instability risk was understood as a *pairing*
+problem (which physical row is "version 0" vs "version 1"), not a
+*snapshot-merge* problem, and marts-level filtering was assumed sufficient
+to keep it from affecting anything user-facing.
+
+Building `snap_osfi_filings` in Phase 5 falsified that assumption. Building
+the snapshot with the corrected `(return_title, label)` ordering, then
+manually restating one unrelated row (`Id 1000000`, E3, code `3001`) to
+prove the snapshot's restatement mechanism works end to end, the `dbt
+snapshot` merge touched **104 rows**, not the 2 expected for one genuine
+change. Querying which rows actually closed:
+
+| Institution | Return | Rows closed |
+|---|---|---|
+| `28017` (quarantined) | P3 | 32 |
+| `28017` (quarantined) | E3 | 14 |
+| `1000000` (the real, deliberate change) | E3 | 1 |
+
+**46 phantom restatements appeared for `Id 28017` even though none of its
+underlying data had changed between the two snapshot invocations.** The two
+runs queried byte-identical source rows. The only thing that changed was
+which physical row `row_number()` happened to assign `variant_seq = 0` vs
+`1` to, on that particular execution of the query.
+
+This is a stronger failure mode than the original ADR anticipated. The
+original text ("if a label edit reorders two concurrent variants, variant
+identity swaps") assumed instability required the *data* to change between
+pulls. What actually happened is that BigQuery's `row_number()` has **no
+deterministic tiebreak at all** for `Id 28017`'s rows, because literally
+every column is identical between its two versions except the amount —
+there is nothing for `order by return_title, label` to sort on, so the tie
+resolution is free to vary run to run even against unchanged input. Leaving
+these rows in the snapshot's source query means every future `dbt snapshot`
+invocation — including ones where nothing in the real data changed at all —
+would log fresh phantom entries into `int_filings__restatement_events`, a
+model `docs/PROJECT_STRUCTURE.md` designates as dashboard-facing. Marts
+filtering does not prevent this: the corruption originates in the snapshot
+itself, before marts ever see the data.
+
+### Amendment
+
+`snap_osfi_filings`'s source query now excludes any `(institution_id,
+return_code, reporting_period_raw)` combination present in
+`seed_quarantine` **before** the `row_number()` / surrogate-key
+computation — not only in marts. `seed_quarantine.csv` was extended with a
+`reporting_period_raw` column (the same raw fiscal-year/quarter or
+calendar-month representation the snapshot keys on, e.g.
+`"2010-Q4 - 2010"`) alongside the original resolved `reporting_period_end`
+(`2010-12-31`, kept for human readability) as the actual join key, since
+the snapshot deliberately does not resolve a true calendar date at this
+layer (see the base ADR's Context and `docs/known_data_issues.md`).
+
+Verified: dropped the snapshot table and rebuilt from scratch with the
+fixed query. First run created cleanly. Second run, after the same
+`Id 1000000` restatement, produced a `MERGE` touching exactly **2 rows** —
+one closed, one opened, both for the one real, deliberate change. Zero
+`Id 28017` rows appear in the snapshot at all now (excluded before they can
+be assigned an unstable key), which also directly satisfies decision #2's
+original intent — it just required upstream enforcement to actually work
+rather than a marts-only filter that a snapshot-layer bug undermined.
+
+**Positive:** `int_filings__restatement_events` is now protected from a
+noise source that would otherwise have grown by ~46 spurious entries per
+snapshot run, forever.
+
+**Negative:** the snapshot itself now has a hard dependency on
+`seed_quarantine` at snapshot-build time rather than only at the marts
+layer — any future quarantine entry must be seeded and `dbt seed` run
+before the next `dbt snapshot`, or the newly-quarantined rows will still
+generate one round of phantom churn before the exclusion takes effect.

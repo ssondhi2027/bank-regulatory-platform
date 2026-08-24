@@ -106,10 +106,18 @@ inconsistent within a single file pull:
    column distinguishes them, so a content-based tiebreak correctly finds
    nothing to break the tie on).
 2. `seeds/seed_quarantine.csv` excludes `Id 28017` at `2010-12-31` (P3 and
-   E3) entirely, at the institution-period level. Excluded from marts,
-   pending manual reconciliation against OSFI's original filing. No
-   algorithmic pairing is attempted — the proof above shows the data does
-   not contain the information needed to do it correctly.
+   E3) entirely, at the institution-period level, pending manual
+   reconciliation against OSFI's original filing. No algorithmic pairing is
+   attempted — the proof above shows the data does not contain the
+   information needed to do it correctly.
+   **Amended in Phase 5** (see the ADR-0002 addendum): originally scoped as
+   "excluded from marts," this proved insufficient — building
+   `snap_osfi_filings` showed BigQuery's `row_number()` has no stable
+   tiebreak at all for `Id 28017`'s rows (every column but the amount is
+   identical), so leaving them in the snapshot's source query produced 46
+   phantom restatement rows across two runs on *unchanged* data. The
+   exclusion now happens in the snapshot itself, upstream of
+   `row_number()`, not only in marts.
 3. `seeds/seed_data_point_variants.csv` is now an **override table**.
    Default (no seed row): `is_primary_basis` is derived automatically as
    the variant whose `(return_title, label_as_filed)` matches the

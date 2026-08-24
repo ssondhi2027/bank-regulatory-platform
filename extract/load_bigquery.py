@@ -24,6 +24,16 @@ WRITE_TRUNCATE is safe here: the landing zone on disk is the durable,
 content-addressed record. Raw in the warehouse is derived and rebuildable
 from it at any time, so truncate-and-reload is not a data-loss risk.
 
+Only the MOST RECENT landed file per return code is loaded, not every
+version ever landed. OSFI republishes the whole file each cycle -- the
+landing zone keeps every past version forever (append-only, rule 6), but
+raw represents current known state. Loading every historical version
+simultaneously would put duplicate natural keys (same institution/period/
+code, different amounts) into a single dbt snapshot invocation, which
+dbt's snapshot mechanism cannot resolve -- restatement history is supposed
+to accumulate across REPEATED snapshot runs over time, not within raw
+itself.
+
 Usage:
     python extract/load_bigquery.py
 """
@@ -49,12 +59,25 @@ RAW = Path("data/raw")
 OSFI_RETURN_CODES = {"M4", "P3", "E3"}
 
 
-def load_landed_frames() -> pd.DataFrame:
-    frames = []
+def latest_meta_per_return() -> list[dict]:
+    latest: dict[str, dict] = {}
     for meta_path in RAW.rglob("*.meta.json"):
         meta = json.loads(meta_path.read_text())
-        if meta.get("return_code") not in OSFI_RETURN_CODES:
+        code = meta.get("return_code")
+        if code not in OSFI_RETURN_CODES:
             continue  # skip boc_extract.py's sidecar -- different shape, different table
+        current = latest.get(code)
+        if current is None or meta["ingested_at"] > current["ingested_at"]:
+            latest[code] = meta
+    missing = OSFI_RETURN_CODES - set(latest)
+    if missing:
+        raise RuntimeError(f"No landed file found for: {missing} -- run osfi_extract.py first")
+    return list(latest.values())
+
+
+def load_landed_frames() -> pd.DataFrame:
+    frames = []
+    for meta in latest_meta_per_return():
         csv_path = Path(meta["path"])
         df = pd.read_csv(csv_path, low_memory=False, dtype=str)
         df["source_file_name"] = csv_path.name
@@ -63,8 +86,6 @@ def load_landed_frames() -> pd.DataFrame:
         df["ckan_last_modified"] = meta["ckan_last_modified"]
         df["ingested_at"] = meta["ingested_at"]
         frames.append(df)
-    if not frames:
-        raise RuntimeError(f"No landed OSFI files found under {RAW} -- run osfi_extract.py first")
     return pd.concat(frames, ignore_index=True)
 
 

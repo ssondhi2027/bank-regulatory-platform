@@ -1,0 +1,28 @@
+name: 'bank_regulatory_platform'
+version: '1.0.0'
+config-version: 2
+profile: 'bank_regulatory_platform'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+vars:
+  as_of_ts: null                 # override for point-in-time reconstruction
+  materiality_threshold_cad_000: 1
+  peer_group_default: 'BIG_SIX'
+
+models:
+  bank_regulatory_platform:
+    +persist_docs:
+      relation: true
+      columns: true
+    staging:
+      +materialized: view
+      +schema: staging
+
+snapshots:
+  bank_regulatory_platform:
+    +target_schema: snapshots

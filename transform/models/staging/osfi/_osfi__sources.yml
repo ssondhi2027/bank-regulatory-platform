@@ -1,0 +1,105 @@
+version: 2
+
+sources:
+  - name: osfi_raw
+    database: "{{ env_var('GCP_PROJECT_ID') }}"
+    schema: osfi_raw
+    description: >
+      Landed OSFI financial returns (M4, P3, E3), loaded as-is by
+      extract/load_bigquery.py from the content-addressed landing zone.
+      Append-only: restatements arrive as new rows on reload, not updates
+      in place. Column names are the OSFI source headers normalized to
+      BigQuery-safe identifiers (see extract/generate_schema.py::normalize
+      and extract/schema.yml) -- e.g. "Data Point Address/Adresse de point
+      de donnée" became data_point_address_adresse_de_point_de_donnee.
+      Every column lands as STRING; no casting happens before staging.
+    config:
+      loaded_at_field: ingested_at
+      freshness:
+        # OSFI publishes monthly (M4) returns around the 15th of the
+        # following month, and quarterly (P3, E3) returns per its published
+        # calendar. warn at 45 days, error at 75 days covers both cadences
+        # with headroom for OSFI's own publication lag.
+        warn_after: { count: 45, period: day }
+        error_after: { count: 75, period: day }
+    tables:
+      - name: filings
+        description: >
+          One row per (institution, return, period, line item) as filed.
+          M4 rows populate calendar_year_annee_civile /
+          calendar_month_mois_civil and leave fiscal_year_annee_fiscale /
+          fiscal_quarter / trimestre_fiscal null; P3 and E3 rows are the
+          reverse. source_return_code distinguishes which.
+        config:
+          loaded_at_field: ingested_at
+        columns:
+          - name: id
+            description: OSFI institution ID, or a pseudo-ID for aggregate rows (1000000/1000001/1000002 = Total All Banks / Total Domestic Banks / Total Foreign Bank Subsidiaries).
+          - name: source_return_code
+            description: M4, P3, or E3.
+            tests:
+              - accepted_values:
+                  arguments:
+                    values: ["M4", "P3", "E3"]
+          - name: calendar_year_annee_civile
+            description: M4 only. Calendar year.
+          - name: calendar_month_mois_civil
+            description: M4 only. Month-end date, already YYYY-MM-DD text.
+          - name: fiscal_year_annee_fiscale
+            description: P3/E3 only. Fiscal year.
+          - name: fiscal_quarter
+            description: >
+              P3/E3 only, e.g. "Q1 - 2007". Converting this to a true
+              calendar reporting_period_end requires each institution's
+              fiscal-year-end month (seed_institution_master, Phase 6) and
+              is deliberately NOT done in staging -- see
+              docs/known_data_issues.md.
+          - name: trimestre_fiscal
+            description: P3/E3 only. French duplicate of fiscal_quarter.
+          - name: total_all_banks_total_industry_groups_fis
+            description: Institution or aggregate name (English).
+          - name: total_banques_total_des_groupe_sectoriel_iffs
+            description: Institution or aggregate name (French).
+          - name: industry_group
+            description: All Banks / Domestic Banks / Foreign Bank Subsidiaries / Foreign Bank Subsidiaries Banks.
+          - name: groupe_sectoriel
+            description: French duplicate of industry_group.
+          - name: return_releve
+            description: Return code (M4/P3/E3), single value per file.
+          - name: return_title
+            description: >
+              Load-bearing, not just informational -- part of the
+              variant_seq ordering key (ADR-0002). The same line item code
+              is republished under revised Return Title wording over the
+              return's history; ordering on (return_title, label)
+              disambiguates concurrent variants.
+            tests:
+              - not_null
+          - name: titre_du_releve
+            description: French duplicate of return_title.
+          - name: data_point_address_adresse_de_point_de_donnee
+            description: >
+              The line-item code. NOT unique on its own within
+              (institution, period) -- see ADR-0001/ADR-0002; variant_seq
+              exists because of this.
+            tests:
+              - not_null
+          - name: data_point_address_label
+            description: The line-item description (English), as filed. Revised over time; never a join key on its own.
+          - name: libelle_de_l_adresse_du_point_de_donnees
+            description: French duplicate of data_point_address_label.
+          - name: fi_inactive_date_date_d_inactivite_iff
+            description: Institution inactive date, or 9999-12-31 if still active.
+          - name: measure_value_valeur_de_mesure
+            description: >
+              The amount, in thousands of CAD (implicit -- no units column
+              exists in the source). Null means "not reported," never
+              coalesce to zero -- see docs/known_data_issues.md.
+          - name: source_file_name
+            description: Audit column. Landed CSV filename (content hash).
+          - name: source_file_hash
+            description: Audit column. SHA-256 of the landed file.
+          - name: ckan_last_modified
+            description: Audit column. CKAN's reported last-modified timestamp for the resource.
+          - name: ingested_at
+            description: Audit column. When extract/osfi_extract.py landed this file.

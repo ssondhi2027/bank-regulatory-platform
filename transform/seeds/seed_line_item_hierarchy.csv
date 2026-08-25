@@ -1,0 +1,875 @@
+return_code,line_item_code,line_item_desc,parent_line_item_code,hierarchy_level,is_subtotal,expected_sign,note
+E3,3019,Total,,1,true,,
+E3,3038,Total,,1,true,,
+E3,3057,Total,,1,true,,
+E3,3181,Of which:  Reverse mortgages,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3201,Total,,1,true,,
+E3,3316,Total,,1,true,,
+E3,3367,Total,,1,true,,
+E3,3418,Total,,1,true,,
+E3,3001,Deposits with regulated financial institutions,3019,2,false,,
+E3,3002,Securities,3019,2,true,,
+E3,3005,To individuals for non-business purposes,3019,2,true,,
+E3,3013,Other,3019,2,false,,
+E3,3014,Residential *,3019,2,false,,
+E3,3016,Non-residential,3019,2,false,,
+E3,3017,Acceptances,3019,2,false,,
+E3,3018,Other recognized assets,3019,2,false,,
+E3,3020,Deposits with regulated financial institutions,3038,2,false,,
+E3,3021,Securities,3038,2,true,,
+E3,3024,To individuals for non-business purposes,3038,2,true,,
+E3,3032,Other,3038,2,false,,
+E3,3033,Residential *,3038,2,false,,
+E3,3035,Non-residential,3038,2,false,,
+E3,3036,Acceptances,3038,2,false,,
+E3,3037,Other recognized assets,3038,2,false,,
+E3,3039,Deposits with regulated financial institutions,3057,2,false,,
+E3,3040,Securities,3057,2,true,,
+E3,3043,To individuals for non-business purposes,3057,2,true,,
+E3,3051,Other,3057,2,false,,
+E3,3052,Residential *,3057,2,false,,
+E3,3054,Non-residential,3057,2,false,,
+E3,3055,Acceptances,3057,2,false,,
+E3,3056,Other recognized assets,3057,2,false,,
+E3,3193,Deposits with regulated financial institutions,3201,2,false,,
+E3,3194,Securities,3201,2,true,,
+E3,3195,To individuals for non-business purposes,3201,2,true,,
+E3,3196,Other,3201,2,false,,
+E3,3197,Residential *,3201,2,false,,
+E3,3198,Non-residential,3201,2,false,,
+E3,3199,Acceptances,3201,2,false,,
+E3,3200,Other recognized assets,3201,2,false,,
+E3,3224,Reverse Mortgages:  Principal,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3225,Reverse Mortgages:  Accrued Interest,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3227,Reverse Mortgages:  Accrued Fees,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3228,Reverse Mortgages:  Other Accrued Items,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3230,Reverse Mortgages:  Unpaid Insurance,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3231,Reverse Mortgages:  Unpaid Taxes,3181,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3300,Deposits with regulated financial institutions,3316,2,false,,
+E3,3301,Securities,3316,2,true,,
+E3,3302,To individuals for non-business purposes,3316,2,true,,
+E3,3310,Other,3316,2,false,,
+E3,3311,Residential *,3316,2,false,,
+E3,3313,Non-residential,3316,2,false,,
+E3,3314,Acceptances,3316,2,false,,
+E3,3315,Other recognized assets,3316,2,false,,
+E3,3351,Deposits with regulated financial institutions,3367,2,false,,
+E3,3352,Securities,3367,2,true,,
+E3,3353,To individuals for non-business purposes,3367,2,true,,
+E3,3361,Other,3367,2,false,,
+E3,3362,Residential *,3367,2,false,,
+E3,3364,Non-residential,3367,2,false,,
+E3,3365,Acceptances,3367,2,false,,
+E3,3366,Other recognized assets,3367,2,false,,
+E3,3402,Deposits with regulated financial institutions,3418,2,false,,
+E3,3403,Securities,3418,2,true,,
+E3,3404,To individuals for non-business purposes,3418,2,true,,
+E3,3412,Other,3418,2,false,,
+E3,3413,Residential *,3418,2,false,,
+E3,3415,Non-residential,3418,2,false,,
+E3,3416,Acceptances,3418,2,false,,
+E3,3417,Other recognized assets,3418,2,false,,
+E3,3003,Securities measured at amortized cost,3002,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3004,Securities measured at fair value through other comprehensive income,3002,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3006,(A) Credit cards,3005,3,false,,
+E3,3007,(B) Personal loan plans,3005,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3009,(C) Personal line of credit,3005,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3012,(D) Other personal,3005,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3022,Securities measured at amortized cost,3021,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3023,Securities measured at fair value through other comprehensive income,3021,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3025,(A) Credit cards,3024,3,false,,
+E3,3026,(B) Personal loan plans,3024,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3028,(C) Personal line of credit,3024,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3031,(D) Other personal,3024,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3041,Securities measured at amortized cost,3040,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3042,Securities measured at fair value through other comprehensive income,3040,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3044,(A) Credit cards,3043,3,false,,
+E3,3045,(B) Personal loan plans,3043,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3047,(C) Personal line of credit,3043,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3050,(D) Other personal,3043,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3250,Securities measured at amortized cost,3301,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3251,Securities measured at fair value through other comprehensive income,3301,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3256,Securities measured at amortized cost,3352,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3257,Securities measured at fair value through other comprehensive income,3352,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3262,Securities measured at amortized cost,3403,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3263,Securities measured at fair value through other comprehensive income,3403,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3268,Securities measured at amortized cost,3194,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3269,Securities measured at fair value through other comprehensive income,3194,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3303,(A) Credit cards,3302,3,false,,
+E3,3304,(B) Personal loan plans,3302,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3306,(C) Personal line of credit,3302,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3309,(D) Other personal,3302,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3354,(A) Credit cards,3353,3,false,,
+E3,3355,(B) Personal loan plans,3353,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3357,(C) Personal line of credit,3353,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3360,(D) Other personal,3353,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3405,(A) Credit cards,3404,3,false,,
+E3,3406,(B) Personal loan plans,3404,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3408,(C) Personal line of credit,3404,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3411,(D) Other personal,3404,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3453,(A) Credit cards,3195,3,false,,
+E3,3454,(B) Personal loan plans,3195,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3456,(C) Personal line of credit,3195,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3459,(D) Other personal,3195,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+E3,3015,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3034,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3053,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3095,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3096,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3098,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3099,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3102,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3107,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3123,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3124,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3125,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3126,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3127,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3128,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3129,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3130,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3131,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3132,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3133,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3134,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3135,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3136,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3137,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3138,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3139,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3141,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3142,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3143,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3144,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3145,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3146,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3147,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3148,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3149,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3150,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3151,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3152,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3153,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3154,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3155,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3156,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3157,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3171,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3172,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3177,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3178,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3186,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3187,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3189,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3190,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3312,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3317,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3318,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3319,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3320,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3327,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3328,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3329,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3330,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3331,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3332,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3333,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3334,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3335,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3336,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3337,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3344,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3345,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3346,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3347,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3348,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3349,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3350,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3363,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3368,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3369,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3370,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3371,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3378,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3379,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3380,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3381,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3382,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3383,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3384,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3385,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3386,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3387,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3388,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3395,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3396,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3397,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3398,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3399,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3400,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3401,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3414,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3419,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3420,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3421,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3422,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3429,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3430,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3431,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3432,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3433,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3434,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3435,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3436,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3437,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3438,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3439,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3446,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3447,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3448,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3449,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3450,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3451,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3452,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+E3,3460,(A) Of which Uninsured,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0563,Total assets,,1,true,,
+M4,0639,Of which: which have the Bank of Canada or other organizations of the federal government as the counterparty,,1,true,,
+M4,0640,Of which: which have the Bank of Canada or other organizations of the federal government as the counterparty,,1,true,,
+M4,0657,Total liabilities and shareholders' equity,,1,true,,
+M4,0910,[from validation rule IR1650] The total of assets held for trading must equal the sum of the individual components.,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0914,[from validation rule IR1651] The total of assets available for sale must equal the sum of the individual components.,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0918,Total,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0926,[from validation rule IR1654] The total of assets fair value option must equal the sum of the individual components.,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0930,[from validation rule IR1655] The total of liabilities held for trading must equal the sum of the individual components.,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0938,Total,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0965,[from validation rule IR1658] The total of liabilities fair value option must equal the sum of the individual components.,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1045,Total assets,,1,true,,
+M4,2230,Total liabilities and shareholders' equity,,1,true,,
+M4,2653,[from validation rule IR132] FIS adds to Total for Realized an unrealized Gain/(Loss),,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2666,[from validation rule IR120] FIS adds across to Total for Debt Securities,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2667,[from validation rule IR121] FIS adds across to Total for Shares Securities,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2668,[from validation rule IR122] FIS adds across to Total for Debt Other Securities,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2669,[from validation rule IR123] FIS adds across to Total for Shares Other Securities,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2670,[from validation rule IR124] FIS adds across to Total for Non-mortgage loans,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2671,[from validation rule IR125] FIS adds across to Total for Mortgages,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2672,[from validation rule IR126] FIS adds across to Total for Customer's liability under acceptances,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2673,[from validation rule IR127] FIS adds across to Total for Other Assets,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2674,[from validation rule IR128] FIS adds across to Total for Fixed-term deposits,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2675,[from validation rule IR129] FIS adds across to Total for Acceptances,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2676,[from validation rule IR130] FIS adds across to Total for Subordinated debt,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2677,[from validation rule IR131] FIS adds across to Total for Other Liabilities,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7686,Made under Non-Mortgage Loans to Individuals for non-business purposes secured by residential property,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7687,Made under Non-Mortgage Loans to Individuals for non-business purposes secured by residential property,,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7692,"Made under Mortgages, Residential",,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7693,"Made under Mortgages, Residential",,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7770,(a) Residential mortgages (equals section I (3)(b)(i) CAD only),,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7777,(a) Loans to individuals for non-business purposes - secured by residential property (equals section I (3)(a)(vi)(A) CAD only),,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7780,(a) Non-residential mortgages (equals section I (3)(b)(ii) CAD only),,1,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7800,[from validation rule IR1706] Section I Memo - Loans to individuals for non-business purposes components add to foreign currency total,,1,true,,
+M4,7801,[from validation rule IR1707] Section I Memo - Loans to individuals for non-business purposes components add to total,,1,true,,
+M4,7818,[from validation rule IR1708] Section I Memo - Loans to individuals and others for business purposes components add to foreign currency total,,1,true,,
+M4,7819,[from validation rule IR1709] Section I Memo - Loans to individuals and others for business purposes components add to total,,1,true,,
+M4,0487,"Deposits with regulated financial institutions, less allowance for expected credit losses",0563,2,false,,
+M4,0488,"Deposits with regulated financial institutions, less allowance for expected credit losses",1045,2,false,,
+M4,0502,"Land, buildings, and equipment, less accumulated depreciation",1045,2,false,,
+M4,0503,Contributed surplus,2230,2,false,,
+M4,0509,"Gold, Bank notes, deposits with Bank of Canada, cheques and other items in transit",0563,2,false,,
+M4,0510,Treasury Bills and other short term paper,0563,2,false,,
+M4,0517,Debt,0563,2,false,,
+M4,0518,Debt,1045,2,false,,
+M4,0519,Shares,0563,2,false,,
+M4,0520,Shares,1045,2,false,,
+M4,0523,"To Canadian federal government, provinces, municipal or school corporations",0563,2,false,,
+M4,0524,"To Canadian federal government, provinces, municipal or school corporations",1045,2,false,,
+M4,0525,To foreign  governments,0563,2,false,,
+M4,0526,To foreign  governments,1045,2,false,,
+M4,0527,"Land, buildings, and equipment, less accumulated depreciation",0563,2,false,,
+M4,0533,To individuals for non-business purposes,0563,2,true,,
+M4,0534,To individuals for non-business purposes,1045,2,true,,
+M4,0537,Other securities,0563,2,false,,
+M4,0539,Insured,0563,2,false,,
+M4,0540,Insured,1045,2,false,,
+M4,0541,,0563,2,false,,
+M4,0542,,1045,2,false,,
+M4,0551,,0563,2,false,,
+M4,0552,Insurance-related assets,0563,2,false,,
+M4,0553,Accrued interest,0563,2,false,,
+M4,0555,Prepaid and deferred charges,0563,2,false,,
+M4,0556,Prepaid and deferred charges,1045,2,false,,
+M4,0559,Deferred tax assets,0563,2,false,,
+M4,0560,Deferred tax assets,1045,2,false,,
+M4,0571,To individuals and others for business purposes,0563,2,false,,
+M4,0572,To individuals and others for business purposes,1045,2,false,,
+M4,0599,Accrued interest,0657,2,false,,
+M4,0608,,1045,2,false,,
+M4,0615,Tax Sheltered,0657,2,false,,
+M4,0616,Tax Sheltered,2230,2,false,,
+M4,0617,Other,0657,2,false,,
+M4,0618,Other,2230,2,false,,
+M4,0619,Call and other short loans payable,0657,2,false,,
+M4,0620,Call and other short loans payable,2230,2,false,,
+M4,0623,Other,0657,2,false,,
+M4,0624,Other,2230,2,false,,
+M4,0625,Mortgages and loans payable,0657,2,false,,
+M4,0626,Mortgages and loans payable,2230,2,false,,
+M4,0627,Current,0657,2,false,,
+M4,0628,Current,2230,2,false,,
+M4,0629,Deferred,0657,2,false,,
+M4,0630,Deferred,2230,2,false,,
+M4,0631,Obligations related to borrowed securities,0657,2,false,,
+M4,0632,Obligations related to borrowed securities,2230,2,false,,
+M4,0633,Obligations related to assets sold under repurchase agreements,0657,2,false,,
+M4,0634,Obligations related to assets sold under repurchase agreements,2230,2,false,,
+M4,0635,Deferred income,0657,2,false,,
+M4,0636,Deferred income,2230,2,false,,
+M4,0653,Preferred shares,0657,2,false,,
+M4,0654,Common shares,0657,2,false,,
+M4,0655,Contributed surplus,0657,2,false,,
+M4,0665,Reverse repurchase agreements,0563,2,false,,
+M4,0666,Reverse repurchase agreements,1045,2,false,,
+M4,0670,,0639,2,false,,
+M4,0671,,0640,2,false,,
+M4,0672,,0639,2,false,,
+M4,0673,,0640,2,false,,
+M4,0674,,0639,2,false,,
+M4,0675,,0640,2,false,,
+M4,0676,,0639,2,false,,
+M4,0677,,0640,2,false,,
+M4,0736,Federal and Provincial,0657,2,false,,
+M4,0737,Municipal or school corporations,0657,2,false,,
+M4,0738,Deposit-taking institutions,0657,2,false,,
+M4,0739,Tax Sheltered,0657,2,false,,
+M4,0740,Other,0657,2,false,,
+M4,0741,Other,0657,2,false,,
+M4,0743,Federal and Provincial,0657,2,false,,
+M4,0744,Municipal or school corporations,0657,2,false,,
+M4,0745,Insurance-related liabilities,0657,2,false,,
+M4,0863,"Gold, Bank notes, deposits with Bank of Canada, cheques and other items in transit",1045,2,false,,
+M4,0865,Treasury Bills and other short term paper,1045,2,false,,
+M4,0866,Other securities,1045,2,false,,
+M4,0869,Insurance-related assets,1045,2,false,,
+M4,0873,Federal and Provincial,2230,2,false,,
+M4,0874,Municipal or school corporations,2230,2,false,,
+M4,0875,Deposit-taking institutions,2230,2,false,,
+M4,0876,Tax Sheltered,2230,2,false,,
+M4,0877,Other,2230,2,false,,
+M4,0878,Other,2230,2,false,,
+M4,0880,Federal and Provincial,2230,2,false,,
+M4,0881,Municipal or school corporations,2230,2,false,,
+M4,0883,Insurance-related liabilities,2230,2,false,,
+M4,0911,,0910,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0912,,0910,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0913,,0910,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0915,,0914,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0916,,0914,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0917,,0914,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0927,,0926,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0928,,0926,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0929,,0926,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0931,,0930,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0932,,0930,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0933,,0930,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0972,,0965,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0990,,0965,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0991,,0965,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1032,"Call and other short loans to investment dealers and brokers, secured",0563,2,false,,
+M4,1059,Advances from the Bank of Canada,2230,2,false,,
+M4,1062,Subordinated debt,0657,2,false,,
+M4,1065,Subordinated debt,2230,2,false,,
+M4,1083,Interests in associates and joint ventures,0563,2,false,,
+M4,1084,Interests in associates and joint ventures,1045,2,false,,
+M4,1091,,0910,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1092,,0914,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1093,,0926,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1094,,0930,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1095,,0965,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1201,Non-controlling interests,0657,2,false,,
+M4,1202,Non-controlling interests,2230,2,false,,
+M4,1896,Derivatives related amounts,0563,2,false,,
+M4,1897,Derivatives related amounts,1045,2,false,,
+M4,1898,Other,0563,2,false,,
+M4,1899,Other,1045,2,false,,
+M4,1999,,0657,2,false,,
+M4,2000,,2230,2,false,,
+M4,2024,Other,0657,2,false,,
+M4,2026,Other,2230,2,false,,
+M4,2056,To regulated financial institutions,0563,2,false,,
+M4,2057,To regulated financial institutions,1045,2,false,,
+M4,2066,Lease receivables,0563,2,false,,
+M4,2067,Lease receivables,1045,2,false,,
+M4,2116,Non-residential,0563,2,false,,
+M4,2117,Non-residential,1045,2,false,,
+M4,2201,Deposit-taking institutions,0657,2,false,,
+M4,2202,Deposit-taking institutions,2230,2,false,,
+M4,2225,Retained earnings,2230,2,false,,
+M4,2250,Accrued interest,1045,2,false,,
+M4,2255,Accrued interest,2230,2,false,,
+M4,2266,Cheques and other items in transit,0657,2,false,,
+M4,2267,Cheques and other items in transit,2230,2,false,,
+M4,2310,"Call and other short loans to investment dealers and brokers, secured",1045,2,false,,
+M4,2326,"Customers liability under acceptances, less allowance for expected credit losses",0563,2,false,,
+M4,2327,"Customers liability under acceptances, less allowance for expected credit losses",1045,2,false,,
+M4,2338,Other,0657,2,false,,
+M4,2339,Other,2230,2,false,,
+M4,2342,Advances from the Bank of Canada,0657,2,false,,
+M4,2344,Acceptances,0657,2,false,,
+M4,2345,Acceptances,2230,2,false,,
+M4,2355,Preferred shares,2230,2,false,,
+M4,2357,Common shares,2230,2,false,,
+M4,2358,Due from Head Office and related Canadian regulated Financial Institutions,0563,2,false,,
+M4,2359,Due from Head Office and related Canadian regulated Financial Institutions,1045,2,true,,
+M4,2366,Due to Head Office and related Canadian regulated Financial Institutions,0657,2,false,,
+M4,2367,Due to Head Office and related Canadian regulated Financial Institutions,2230,2,true,,
+M4,2604,Accumulated Other Comprehensive Income (Loss),2230,2,false,,
+M4,2605,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2666'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2606,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2667'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2607,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2668'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2608,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2669'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2609,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2670'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2610,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2671'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2611,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2672'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2612,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0910', '2673'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2613,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0930', '2674'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2614,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0930', '2675'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2615,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0930', '2676'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2616,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0930', '2677'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2617,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2666'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2618,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2667'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2619,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2668'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2620,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2669'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2621,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2670'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2622,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2671'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2623,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2672'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2624,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0914', '2673'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2625,Debt,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2666'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2626,Shares,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2667'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2627,Debt,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2668'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2628,Shares,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2669'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2629,"Non-Mortgage Loans, less allowance for expected credit losses",,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2670'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2630,"Mortgages, less allowance for expected credit losses",,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2671'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2631,"Customers' liability under acceptances, less allowance for expected credit losses",,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2672'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2632,Other assets,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0918', '2673'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2633,Fixed-term deposits,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0938', '2674'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2634,Acceptances,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0938', '2675'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2635,Subordinated debt,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0938', '2676'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2636,Other liabilities,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0938', '2677'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2638,Other assets,2673,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2639,Other liabilities,2677,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2641,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2666'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2642,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2667'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2643,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2668'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2644,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2669'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2645,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2670'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2646,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2671'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2647,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2672'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2648,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0926', '2673'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2649,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0965', '2674'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2650,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0965', '2675'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2651,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0965', '2676'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2652,,,2,false,,"MULTIPLE PARENTS (matrix/cross-tab cell, not a simple tree): ['0965', '2677'] -- needs manual review to decide which axis, or model separately; code from reference material not observed in loaded filings (may be retired/different vintage)"
+M4,2654,,2666,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2655,,2667,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2656,,2668,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2657,,2669,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2658,,2670,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2659,,2671,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2660,,2672,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2661,,2673,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2662,,2674,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2663,,2675,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2664,,2676,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2665,,2677,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2678,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2679,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2680,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2681,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2682,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2683,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2684,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2685,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2686,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2687,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2688,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2689,,2653,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7688,,7686,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7689,,7687,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7690,,7686,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7691,,7687,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7694,,7692,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7695,,7693,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7696,,7692,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7697,,7693,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7771,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7772,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7773,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7774,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7775,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7776,,7770,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7778,,7777,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7779,,7777,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7781,,7780,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7782,,7780,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7783,,7780,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7784,,7780,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,7802,,7800,2,false,,
+M4,7803,,7801,2,false,,
+M4,7806,,7800,2,false,,
+M4,7807,,7801,2,false,,
+M4,7810,,7800,2,false,,
+M4,7811,,7801,2,false,,
+M4,7814,,7800,2,false,,
+M4,7815,,7801,2,false,,
+M4,7820,,7818,2,false,,
+M4,7821,,7819,2,false,,
+M4,7824,,7818,2,false,,
+M4,7825,,7819,2,false,,
+M4,7828,,7818,2,false,,
+M4,7829,,7819,2,false,,
+M4,7832,,7818,2,false,,
+M4,7833,,7819,2,false,,
+M4,8658,Goodwill,0563,2,false,,
+M4,8659,Goodwill,1045,2,false,,
+M4,8660,With definite lives,0563,2,false,,
+M4,8661,With definite lives,1045,2,false,,
+M4,8662,With indefinite lives,0563,2,false,,
+M4,8663,With indefinite lives,1045,2,false,,
+M4,0728,Credit card (interest and non-interest bearing),0533,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0735,Credit card (interest and non-interest bearing),0534,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1085,Personal loan plans,0533,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1086,Personal loan plans,0534,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1087,,0533,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1088,,0534,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1089,Other personal,0533,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,1090,Other personal,0534,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2360,Head Office,2359,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2361,Related Canadian regulated Deposit-Taking Institutions,2359,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2362,Related Canadian regulated Financial Institutions,2359,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2368,Head Office,2367,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2369,Related Canadian regulated Deposit-Taking Institutions,2367,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,2371,Related Canadian regulated Financial Institutions,2367,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+M4,0491,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0492,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0493,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0494,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0495,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0496,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0497,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0498,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0499,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0500,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0501,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0538,Of which: NHA MBS pooled and unsold,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0543,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0544,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0545,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0546,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0547,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0548,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0549,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0550,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0554,Of which: NHA MBS pooled and unsold,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0557,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0558,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0561,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0562,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0585,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0586,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0587,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0588,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0589,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0590,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0597,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0598,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0602,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0603,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0604,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0605,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0606,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0609,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0610,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0611,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0612,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0613,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0614,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0621,Of which are advances from the Standing Liquidity Facility (SLF),,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0622,Of which are advances from the Standing Liquidity Facility (SLF),,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0637,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0638,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0645,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0646,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0647,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0648,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0649,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0650,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0651,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0652,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0678,Of which are repos with Federal and Provincial public pension plans (CPP and QPP),,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0679,Of which are repos with Federal and Provincial public pension plans (CPP and QPP),,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0864,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0867,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0868,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0870,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0879,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0882,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0884,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,0885,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1001,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1005,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1018,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1019,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1021,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1022,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1075,Secured by residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1076,Secured by residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1077,Secured by other than residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1078,Secured by other than residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1079,Secured by residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1080,Secured by residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1081,Secured by other than residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1082,Secured by other than residential property,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1172,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1894,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,1895,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2001,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2002,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2126,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2127,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2131,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2132,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2136,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2137,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2141,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2142,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2180,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2181,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2193,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2194,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2196,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2197,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2211,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2212,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2261,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2262,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2301,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2303,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2305,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2307,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2332,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,2333,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7804,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7805,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7808,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7809,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7812,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7813,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7816,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7817,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7822,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7823,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7826,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7827,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7830,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7831,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7834,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,7835,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+M4,8635,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1109,31. NET INCOME ATTRIBUTABLE TO EQUITY HOLDERS AND NON-CONTROLLING INTERESTS,,1,true,,
+P3,1168,4. TOTAL COMPREHENSIVE INCOME (LOSS),,1,true,,
+P3,1178,2. TOTAL,,1,true,,
+P3,1284,26. TOTAL NON-INTEREST EXPENSES,,1,true,,
+P3,8252,7. TOTAL INTEREST INCOME INCLUDING DIVIDENDS,,1,true,,
+P3,8407,13. TOTAL INTEREST EXPENSE,,1,true,,
+P3,8535,22. NET INTEREST AND NON-INTEREST INCOME,,1,true,,
+P3,0730,"(b) SEC. ISSUED OR GUAR. BY CDN. PROVINCES, MUNICIPAL OR SCHOOLS",8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0731,(i) DEBT,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0732,(ii) SHARES,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0733,(d) SECURITIES INCOME OF SECURITIES SUBSIDIARY,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0787,"(c) CANADIAN FEDERAL GOVT., PROVINCES, MUNICIPAL OR SCHOOL CORPS.",8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0788,(d) FOREIGN GOVERNMENTS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0789,(a) RESIDENTIAL INSURED,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0790,(b) RESIDENTIAL UNINSURED,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0791,OTHER INTEREST-EARNING ASSETS,8252,2,false,,
+P3,0854,(i) CALL AND OTHER SHORT LOANS PAYABLE,8407,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0855,(ii) OTHER,8407,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0857,(f) REVERSE REPURCHASE AGREEMENTS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1105,(c)  MADE UNDER PERSONAL LINES OF CREDIT,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1111,a) EQUITY HOLDERS OF THE BANK,1168,2,false,,
+P3,1112,b) NON-CONTROLLING INTERESTS,1168,2,false,,
+P3,1158,1. NET INCOME ATTRIBUTABLE TO EQUITY HOLDERS AND NON-CONTROLLING INTERESTS,1168,2,false,,
+P3,1167,3. TOTAL OTHER COMPREHENSIVE INCOME (LOSS),1168,2,true,,
+P3,1197,(a)  NET INCOME ATTRIBUTABLE TO NON-CONTROLLING INTERESTS,1109,2,false,,
+P3,1256,(i) GROSS INCOME,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1257,(ii) EXPENSES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1258,(i) DEPRECIATION,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1259,(ii) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1260,(i) DEPRECIATION,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1261,(ii) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1262,"(a) ADVERTISING, PUBLIC RELATIONS AND BUSINESS DEVELOPMENT",1284,2,false,,
+P3,1263,(b) OFFICE AND GENERAL EXPENSES,1284,2,false,,
+P3,1264,(c) REAL ESTATE COMMISSION EXPENSE,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1265,(i) CANADIAN CAPITAL TAXES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1266,(ii) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1268,(f) DIRECTORS FEES AND RELATED EXPENSES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1269,(g) DEPOSIT INSURANCE PREMIUMS,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1278,"(i) ASSOCIATION, CLEARING AND REGULATORY FEES",1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1279,(i) AUDIT,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1280,(ii) LEGAL,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1281,(iii) MANAGEMENT,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1282,(iv) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1288,29. NET INCOME BEFORE DISCONTINUED OPERATIONS,1109,2,false,,
+P3,1292,(b)  NET INCOME ATTRIBUTABLE TO EQUITY HOLDERS,1109,2,false,,
+P3,1505,(d) OTHER PERSONAL,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1530,(g) OTHER LOANS FOR BUSINESS PURPOSES,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2084,21. NON-INTEREST INCOME,8535,2,true,,
+P3,2564,(ii) INTANGIBLES WITH INDEFINITE LIVES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2565,(i) INTANGIBLES WITH DEFINITE LIVES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2592,(i) GOODWILL,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2594,(ii) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2595,(n) OTHER EXPENSES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,4996,SUBTOTAL OF ITEMS THAT MAY BE RECLASSIFIED SUBSEQUENTLY TO NET INCOME,1178,2,true,,
+P3,4998,SUBTOTAL OF ITEMS THAT WILL NOT BE RECLASSIFIED TO NET INCOME,1178,2,true,,
+P3,6597,(e) INTEREST INCOME ON IMPAIRED NON-MORTGAGE LOANS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,6598,(h) INTEREST INCOME ON IMPAIRED OTHER NON-MORTGAGE LOANS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,6599,(d) INTEREST INCOME ON IMPAIRED MORTGAGES,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,6600,(b) DEFINED BENEFIT PENSION PLAN EXPENSE,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7791,(a) GOVERNMENT OF CANADA,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7928,(c) NON-RESIDENTIAL,8252,2,false,,
+P3,7931,(a) PERSONAL LOAN PLANS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7932,(b) CREDIT CARD,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7935,"(a) CALL & OTH. SHORT LNS. TO INVT. DEALERS AND BROKERS, SECURED",8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7936,(b) REGULATED FINANCIAL INSTITUTIONS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7943,(e) LEASE RECEIVABLES,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7946,1. DEPOSITS WITH REGULATED FINANCIAL INSTITUTIONS,8252,2,false,,
+P3,8401,10. TOTAL INTEREST ON DEPOSITS,8407,2,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8402,11. INTEREST ON SUBORDINATED DEBT,8407,2,false,,
+P3,8404,(a) ADVANCES FROM BANK OF CANADA,8407,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8405,(c) OTHER,8407,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8464,16. NET INTEREST INCOME AFTER CHARGE FOR IMPAIRMENT,8535,2,false,,
+P3,8538,(a) SALARIES,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8542,(c) PENSION CONTRIBUTIONS AND OTHER STAFF BENEFITS (OTHER THAN INCLUDED IN 23 (a) and (b) ABOVE),1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8601,(e) GENERAL INSURANCE EXPENSE,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8603,(j) EMPLOYEE TRAINING AND DEVELOPMENT,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8604,(h) DONATIONS,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8652,30. DISCONTINUED OPERATIONS (NET OF TAXES),1109,2,false,,
+P3,0851,(i) TAX-SHELTERED,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0852,(ii) OTHER,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0853,(e) OTHERS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,1169,(i) EQUITIES (IAS 39),4996,3,false,,
+P3,1170,(ii) DEBT,4996,3,false,,
+P3,1171,(iii) LOANS,4996,3,false,,
+P3,1176,(b) DERIVATIVES DESIGNATED AS CASH FLOW HEDGES,4996,3,false,,
+P3,1177,"(c) FOREIGN CURRENCY TRANSLATION, NET OF HEDGING ACTIVITIES",4996,3,false,,
+P3,1186,(c) OTHER,4998,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,2046,17. TRADING INCOME,2084,3,false,,
+P3,2069,18. GAINS (LOSSES) ON INSTRUMENTS HELD FOR OTHER THAN TRADING PURPOSES,2084,3,false,,
+P3,2150,(a) EQUITIES (IFRS 9),4998,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,4992,SUBTOTAL OF ITEMS THAT MAY BE RECLASSIFIED SUBSEQUENTLY TO NET INCOME,1167,3,true,,
+P3,4994,SUBTOTAL OF ITEMS THAT WILL NOT BE RECLASSIFIED TO NET INCOME,1167,3,true,,
+P3,4995,(e) OTHER,4996,3,false,,
+P3,4997,(b) REMEASUREMENTS OF DEFINED BENEFIT PLANS,4998,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5997,SUBTOTAL OF OCI (LOSS) OF ASSOCIATES AND JOINT VENTURES,4996,3,true,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7792,(a) FEDERAL AND PROVINCIAL,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7793,(a) FEDERAL AND PROVINCIAL,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7794,(b) MUNICIPAL OR SCHOOL CORPORATIONS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7795,(c) DEPOSIT-TAKING INSTITUTIONS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7796,(i) TAX-SHELTERED,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7797,(ii) OTHER,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7798,(e) OTHERS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,7799,(b) MUNICIPAL OR SCHOOL CORPORATIONS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8261,(c) DEPOSIT-TAKING INSTITUTIONS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,8534,20. TOTAL OF OTHER INCOME,2084,3,false,,
+P3,1159,(A) EQUITIES (IAS 39),4992,4,false,,
+P3,1160,(B) DEBT,4992,4,false,,
+P3,1161,(C) LOANS,4992,4,false,,
+P3,1162,(ii) RECLASSIFICATION OF (GAINS)/LOSSES TO NET INCOME,4992,4,false,,
+P3,1163,(i) CHANGE IN UNREALIZED GAINS AND LOSSES,4992,4,false,,
+P3,1164,(ii) RECLASSIFICATION OF (GAINS)/LOSSES TO NET INCOME,4992,4,false,,
+P3,1165,(i) CHANGE IN UNREALIZED GAINS AND LOSSES,4992,4,false,,
+P3,1166,(ii) IMPACT OF HEDGING,4992,4,false,,
+P3,1184,(c) OTHER,4994,4,false,,
+P3,2100,(a) CHANGE IN INVESTMENTS IN EQUITY INSTRUMENTS DESIGNATED AT FVOCI (IFRS 9),4994,4,false,,
+P3,4991,(e) OTHER,4992,4,false,,
+P3,4993,(b) REMEASUREMENTS OF DEFINED BENEFIT PLANS,4994,4,false,,
+P3,5645,(d) SHARE OF OTHER COMPREHENSIVE INCOME (LOSS) OF ASSOCIATES AND JOINT VENTURES,4992,4,false,,
+P3,5991,(A) EQUITIES (IAS 39),5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5992,(B) DEBT,5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5993,(C) LOANS,5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5994,(ii) DERIVATIVES DESIGNATED AS CASH FLOW HEDGES,5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5995,"(iii) FOREIGN CURRENCY TRANSLATION, NET OF HEDGING ACTIVITIES",5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,5996,(iv) OTHER,5997,4,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
+P3,0818,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,0819,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,0820,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,0976,(c) CREDIT AND DEBIT CARD SERVICE FEES,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1110,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1113,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1114,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1129,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1147,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1156,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1173,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1174,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1247,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1248,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1250,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1254,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1255,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1285,27. NET INCOME BEFORE PROVISION FOR INCOME TAXES,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1286,(a) CURRENT,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1287,(b) DEFERRED,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1289,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1290,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,1291,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8091,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8092,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8259,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8260,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8263,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8264,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8265,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8266,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8267,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8268,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8390,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8391,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8395,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8396,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8397,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8398,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8399,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8408,14. NET INTEREST INCOME,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,8463,15. CHARGE FOR IMPAIRMENT,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,9284,(j) INVESTMENT MANAGEMENT AND CUSTODIAL SERVICES,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,9298,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,9299,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,9300,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,9301,(o) FOREIGN EXCHANGE REVENUE OTHER THAN TRADING,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300001,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300002,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300003,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300004,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300006,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300007,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300008,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300009,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300010,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300011,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300012,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300013,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300014,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300015,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300016,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300017,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300018,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300020,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300021,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300022,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300023,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300024,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300027,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300028,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300029,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300030,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300031,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300032,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown
+P3,calcP300033,,,,,,NEEDS REVIEW: appears in real filings but not covered by any pure-addition validation rule found -- parent/is_subtotal unknown

@@ -23,6 +23,31 @@ models:
       +materialized: view
       +schema: staging
 
+seeds:
+  bank_regulatory_platform:
+    # Explicit STRING types everywhere, not autodetected. Same lesson as
+    # extract/load_bigquery.py: a column that looks purely numeric in most
+    # rows (e.g. line_item_code "0563") loses its leading zero the moment
+    # dbt/BigQuery infers INT64 from a CSV sample, silently breaking every
+    # downstream join on that code.
+    seed_line_item_hierarchy:
+      +column_types:
+        line_item_code: string
+        parent_line_item_code: string
+        hierarchy_level: int64
+        is_subtotal: bool
+    seed_institution_master:
+      +column_types:
+        institution_id: string
+        parent_institution_id: string
+    seed_quarantine:
+      +column_types:
+        institution_id: string
+    seed_data_point_variants:
+      +column_types:
+        line_item_code: string
+        variant_seq: string
+
 snapshots:
   bank_regulatory_platform:
     +target_schema: snapshots

@@ -1,0 +1,14 @@
+institution_id,legal_name,short_name,schedule_type,fiscal_year_end_month,parent_institution_id,peer_group
+27997,Royal Bank of Canada,RBC,Domestic Bank,10,,BIG_SIX
+27999,The Toronto-Dominion Bank,TD,Domestic Bank,10,,BIG_SIX
+27998,Bank of Montreal,BMO,Domestic Bank,10,,BIG_SIX
+28000,The Bank of Nova Scotia,Scotiabank,Domestic Bank,10,,BIG_SIX
+27996,Canadian Imperial Bank of Commerce,CIBC,Domestic Bank,10,,BIG_SIX
+28002,National Bank of Canada,National Bank,Domestic Bank,10,,BIG_SIX
+28017,Dundee Bank of Canada,Dundee Bank,Domestic Bank,,28000,BIG_SIX
+28337,Tangerine Bank,Tangerine,Domestic Bank,,28000,BIG_SIX
+28447,National Bank of Greece (Canada),NBG Canada,Domestic Bank,,28000,BIG_SIX
+28445,Amicus Bank,Amicus,Domestic Bank,,27996,BIG_SIX
+28448,BCPBank Canada,BCPBank,Domestic Bank,,27998,BIG_SIX
+28335,First Nations Bank of Canada,FNBC,Domestic Bank,,27999,BIG_SIX
+28010,Canadian Western Bank,CWB,Domestic Bank,,28002,BIG_SIX

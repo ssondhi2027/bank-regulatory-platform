@@ -22,6 +22,14 @@ models:
     staging:
       +materialized: view
       +schema: staging
+    intermediate:
+      +schema: intermediate
+    marts:
+      +materialized: table
+      core:
+        +schema: core
+      finance:
+        +schema: finance
 
 seeds:
   bank_regulatory_platform:
@@ -44,9 +52,18 @@ seeds:
       +column_types:
         institution_id: string
     seed_data_point_variants:
+      # is_primary_basis and accounting_basis learned the same lesson the
+      # hard way: without an explicit type, BigQuery's autodetect guessed
+      # BOOLEAN and INTEGER respectively from a sample that happened to be
+      # blank/'true'/'false'-only, then SILENTLY NULLED every real text
+      # value ("IAS_39", "IFRS_9") on load -- no error, 92/92 rows loaded
+      # "successfully" with accounting_basis entirely gone. Confirmed by
+      # querying the loaded table directly before this fix went in.
       +column_types:
         line_item_code: string
         variant_seq: string
+        accounting_basis: string
+        is_primary_basis: string
 
 snapshots:
   bank_regulatory_platform:

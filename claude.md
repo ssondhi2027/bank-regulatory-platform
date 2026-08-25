@@ -75,7 +75,8 @@ dagster dev                          # asset graph at localhost:3000
 
 ## Current phase
 
-Phase 0 — not started.
+Phase 7 complete (intermediate filings models, core dims, fct_balance_sheet,
+fct_income_statement). Phase 8 (control framework) not started.
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.

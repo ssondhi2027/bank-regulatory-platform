@@ -29,29 +29,47 @@ import requests
 from schema_assert import SchemaDriftError, assert_matches, load_schema
 
 PACKAGE_ID = "91ed76b4-a1a2-4f87-9c4c-59cd64f7a9de"
-CKAN = f"https://open.canada.ca/data/api/action/package_show?id={PACKAGE_ID}"
 WANTED = {
     "banks_monthly_m4.csv": "M4",
     "banks_quarterly_p3.csv": "P3",
     "banks_quarterly_e3.csv": "E3",
 }
+
+# Foreign bank branches: a separate OSFI-published population, not covered
+# by the main Banks dataset at all (REC-007's residual -- see
+# docs/known_data_issues.md, "REC-007 needs a fourth dataset"). Only M4 is
+# landed here: REC-007 needs total_assets (code 1045) for the industry-total
+# tie-out, nothing from P3/E3. Tagged M4_FBB throughout -- a distinct
+# return_code from M4, not a duplicate of it, since it is a different filer
+# population with its own (much smaller) row-count baseline.
+FBB_PACKAGE_ID = "c6879faf-2bc7-4c84-999c-0626ae33ec84"
+FBB_WANTED = {
+    "foreign_bank_branches_monthly_m4.csv": "M4_FBB",
+}
+
 RAW = Path("data/raw")
 
 
-def resolve_resources() -> list[dict]:
+def _ckan_url(package_id: str) -> str:
+    return f"https://open.canada.ca/data/api/action/package_show?id={package_id}"
+
+
+def resolve_resources(package_id: str = PACKAGE_ID,
+                       wanted: dict[str, str] | None = None) -> list[dict]:
     """Never hardcode download URLs -- CKAN is the registry."""
-    pkg = requests.get(CKAN, timeout=60).json()["result"]
+    wanted = wanted or WANTED
+    pkg = requests.get(_ckan_url(package_id), timeout=60).json()["result"]
     out = []
     for r in pkg["resources"]:
         fname = (r.get("url") or "").split("/")[-1].lower()
-        if fname in WANTED:
+        if fname in wanted:
             out.append({
-                "return_code": WANTED[fname],
+                "return_code": wanted[fname],
                 "url": r["url"],
                 "resource_id": r["id"],
                 "ckan_last_modified": r.get("last_modified") or r.get("created"),
             })
-    missing = set(WANTED.values()) - {r["return_code"] for r in out}
+    missing = set(wanted.values()) - {r["return_code"] for r in out}
     if missing:
         raise RuntimeError(f"Resources not found in CKAN package: {missing}")
     return out
@@ -108,6 +126,8 @@ def fetch(res: dict, schema: dict) -> dict:
 def main() -> None:
     schema = load_schema()
     for res in resolve_resources():
+        fetch(res, schema)
+    for res in resolve_resources(FBB_PACKAGE_ID, FBB_WANTED):
         fetch(res, schema)
 
 

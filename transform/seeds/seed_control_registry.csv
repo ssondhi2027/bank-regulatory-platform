@@ -1,0 +1,22 @@
+control_id,control_name,category,severity,owner,description,regulatory_ref
+REC-001,balance_sheet_balances,Reconciliation,error,Finance Data,Assets equal liabilities plus equity per institution per period,BCBS 239 P3 Accuracy
+REC-002,subtotal_rollup_integrity,Reconciliation,error,Finance Data,Child line items sum to declared parent subtotal,BCBS 239 P3 Accuracy
+REC-003,income_statement_rollforward,Reconciliation,error,Finance Data,Net income reconciles to revenue less expenses provisions and tax,BCBS 239 P3 Accuracy
+REC-004,retained_earnings_continuity,Reconciliation,warn,Finance Data,Retained earnings roll forward across consecutive periods,BCBS 239 P3 Accuracy
+REC-005,cross_return_net_income_tieout,Reconciliation,error,Finance Data,Net income agrees between income statement and equity section,BCBS 239 P3 Accuracy
+REC-006,restated_filing_still_balances,Reconciliation,error,Finance Data,Restated versions satisfy the balance sheet identity,BCBS 239 P7 Accuracy
+REC-007,industry_total_ties_to_published,Reconciliation,error,Finance Data,Computed industry aggregate equals published total across domestic foreign subsidiaries and foreign branches,BCBS 239 P3 Accuracy
+CMP-001,all_expected_institutions_filed,Completeness,error,Platform,Every active institution has a filing for the period,BCBS 239 P4 Completeness
+CMP-002,no_reporting_period_gaps,Completeness,error,Platform,No missing periods in an institution filing sequence,BCBS 239 P4 Completeness
+CMP-003,mandatory_line_items_present,Completeness,warn,Finance Data,All mandatory line items present in each return,BCBS 239 P4 Completeness
+CMP-004,row_volume_within_expected_band,Completeness,warn,Platform,Ingested row count within tolerance of trailing average,BCBS 239 P4 Completeness
+VAL-001,amounts_not_null_numeric,Validity,error,Platform,Amount values are populated and numeric,BCBS 239 P3 Accuracy
+VAL-002,sign_convention_respected,Validity,warn,Finance Data,Line items follow expected sign conventions,BCBS 239 P3 Accuracy
+VAL-003,institution_in_registry,Validity,error,Platform,Institution identifier exists in the registry,BCBS 239 P3 Integrity
+VAL-004,period_end_is_valid_boundary,Validity,error,Platform,Reporting period end is a valid month or quarter end,BCBS 239 P3 Accuracy
+VAL-005,units_and_currency_consistent,Validity,error,Platform,All amounts expressed in thousands of Canadian dollars,BCBS 239 P3 Accuracy
+TML-001,osfi_source_freshness,Timeliness,warn,Platform,OSFI filings received within expected publication lag,BCBS 239 P5 Timeliness
+TML-002,boc_business_day_coverage,Timeliness,error,Platform,Rate series has an observation for every business day,BCBS 239 P5 Timeliness
+PLA-001,total_assets_change_plausible,Plausibility,warn,Finance Data,Period over period asset change within expected band,BCBS 239 P3 Accuracy
+PLA-002,nim_within_plausible_range,Plausibility,warn,Finance Data,Net interest margin falls in a plausible range,BCBS 239 P3 Accuracy
+PLA-003,no_duplicate_active_versions,Plausibility,error,Platform,Exactly one current version per filing line key,BCBS 239 P3 Integrity

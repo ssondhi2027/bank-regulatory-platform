@@ -693,9 +693,9 @@ P3,0854,(i) CALL AND OTHER SHORT LOANS PAYABLE,8407,2,false,,code from reference
 P3,0855,(ii) OTHER,8407,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,0857,(f) REVERSE REPURCHASE AGREEMENTS,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,1105,(c)  MADE UNDER PERSONAL LINES OF CREDIT,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
-P3,1111,a) EQUITY HOLDERS OF THE BANK,1168,2,false,,
-P3,1112,b) NON-CONTROLLING INTERESTS,1168,2,false,,
 P3,1158,1. NET INCOME ATTRIBUTABLE TO EQUITY HOLDERS AND NON-CONTROLLING INTERESTS,1168,2,false,,
+P3,1111,a) EQUITY HOLDERS OF THE BANK,,1,false,,IR200 (1168=1111+1112) is a redundant alternate to IR197 (1168=1158+1167); not modeled as a direct child of 1168 to avoid double-counting when both partitions are filed. See docs/known_data_issues.md.
+P3,1112,b) NON-CONTROLLING INTERESTS,,1,false,,IR200 (1168=1111+1112) is a redundant alternate to IR197 (1168=1158+1167); not modeled as a direct child of 1168 to avoid double-counting when both partitions are filed. See docs/known_data_issues.md.
 P3,1167,3. TOTAL OTHER COMPREHENSIVE INCOME (LOSS),1168,2,true,,
 P3,1197,(a)  NET INCOME ATTRIBUTABLE TO NON-CONTROLLING INTERESTS,1109,2,false,,
 P3,1256,(i) GROSS INCOME,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
@@ -716,7 +716,7 @@ P3,1279,(i) AUDIT,1284,2,false,,code from reference material not observed in loa
 P3,1280,(ii) LEGAL,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,1281,(iii) MANAGEMENT,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,1282,(iv) OTHER,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
-P3,1288,29. NET INCOME BEFORE DISCONTINUED OPERATIONS,1109,2,false,,
+P3,1288,29. NET INCOME BEFORE DISCONTINUED OPERATIONS,,1,false,,IR202 (1109=1288+8652) is a redundant alternate to IR203 (1109=1197+1292); not modeled as a direct child of 1109 to avoid double-counting when both partitions are filed. See docs/known_data_issues.md.
 P3,1292,(b)  NET INCOME ATTRIBUTABLE TO EQUITY HOLDERS,1109,2,false,,
 P3,1505,(d) OTHER PERSONAL,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,1530,(g) OTHER LOANS FOR BUSINESS PURPOSES,8252,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
@@ -750,7 +750,7 @@ P3,8542,(c) PENSION CONTRIBUTIONS AND OTHER STAFF BENEFITS (OTHER THAN INCLUDED 
 P3,8601,(e) GENERAL INSURANCE EXPENSE,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,8603,(j) EMPLOYEE TRAINING AND DEVELOPMENT,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,8604,(h) DONATIONS,1284,2,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
-P3,8652,30. DISCONTINUED OPERATIONS (NET OF TAXES),1109,2,false,,
+P3,8652,30. DISCONTINUED OPERATIONS (NET OF TAXES),,1,false,,IR202 (1109=1288+8652) is a redundant alternate to IR203 (1109=1197+1292); not modeled as a direct child of 1109 to avoid double-counting when both partitions are filed. See docs/known_data_issues.md.
 P3,0851,(i) TAX-SHELTERED,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,0852,(ii) OTHER,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)
 P3,0853,(e) OTHERS,8401,3,false,,code from reference material not observed in loaded filings (may be retired/different vintage)

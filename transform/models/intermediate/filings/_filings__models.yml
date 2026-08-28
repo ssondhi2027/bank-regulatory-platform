@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_filings__current_version
+    description: >
+      The "as we know it today" spine, long format (one row per line item),
+      is_primary_basis resolved. Ephemeral -- see the model's own header
+      comment.
+    tests:
+      # REC-002: M4's hierarchy matches OSFI's own validation-rule formulas
+      # exactly and every declared child code is actually filed -- passes
+      # cleanly. P3/E3 are deliberately NOT tested here: their granular
+      # detail-line codes are essentially never populated in current-era
+      # filings (confirmed by direct query, not assumed -- e.g. 5 of P3
+      # code 8407's 6 declared children have zero rows anywhere in the
+      # scoped data), so a rollup check against them would have nothing
+      # real to compare. See docs/known_data_issues.md.
+      - subtotal_rollup:
+          name: rec_002_subtotal_rollup_m4
+          return_code: M4
+          tolerance: "{{ var('materiality_threshold_cad_000') }}"

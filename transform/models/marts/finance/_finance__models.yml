@@ -1,0 +1,115 @@
+version: 2
+
+models:
+  - name: fct_balance_sheet
+    description: >
+      One row per institution per reporting period. Incremental on
+      known_from_ts (knowledge time), never reporting_period_end -- see
+      the model's own header comment and CLAUDE.md rule 4.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - institution_id
+            - reporting_period_end
+      # REC-001: assets = liabilities + equity, within a materiality
+      # tolerance (CLAUDE.md rule 7 -- OSFI reports in thousands and
+      # rounds, so exact equality would false-alarm on every period).
+      - dbt_utils.expression_is_true:
+          name: rec_001_balance_sheet_balances
+          expression: >
+            abs(total_assets_cad_000
+                - (total_liabilities_cad_000 + total_equity_cad_000))
+            <= {{ var('materiality_threshold_cad_000') }}
+          config:
+            severity: error
+            store_failures: true
+    columns:
+      - name: institution_key
+        tests:
+          - not_null
+      - name: institution_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_institution')
+              field: institution_id
+      - name: reporting_period_end
+        tests:
+          - not_null
+      - name: total_assets_cad_000
+        description: OSFI's own reported grand total (code 1045), not derived by summing components.
+        tests:
+          - not_null
+      - name: total_liabilities_cad_000
+        tests:
+          - not_null
+      - name: total_equity_cad_000
+        tests:
+          - not_null
+      - name: gross_loans_cad_000
+        description: >
+          Null (not zero) when the E3 allowance couldn't be matched to this
+          institution/period -- unknown FYE or no filing for that exact
+          quarter. "We don't know" is not "zero".
+      - name: allowance_for_credit_losses_cad_000
+        description: Same nullability rule as gross_loans_cad_000.
+
+  - name: fct_income_statement
+    description: >
+      One row per institution per reporting period. Same knowledge-time
+      incremental rule as fct_balance_sheet.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - institution_id
+            - reporting_period_end
+      # REC-003: net income before tax reconciles to revenue less expenses,
+      # per OSFI's own P3 validation rule IR167 (net_income_before_tax =
+      # net_interest_income_after_impairment + non_interest_income -
+      # non_interest_expense). Stops at the pre-tax figure, not final
+      # net_income -- IR168's further step to after-tax needs P3's current/
+      # future tax provision codes (1286/1287), which are not currently
+      # pivoted. All four columns used here are fully populated across
+      # every scoped row (verified), unlike REC-004/REC-005's inputs --
+      # see docs/known_data_issues.md.
+      #
+      # Tolerance is looser than the global materiality_threshold_cad_000
+      # (1): this expression combines three independently-rounded OSFI
+      # figures, so their individual thousands-rounding compounds. Observed
+      # variance on the first run topped out at 6 (thousand CAD) against
+      # figures in the billions -- 10 gives headroom without masking a real
+      # break.
+      - dbt_utils.expression_is_true:
+          name: rec_003_income_statement_rollforward
+          expression: >
+            abs(net_income_before_tax_cad_000
+                - (net_interest_income_after_impairment_cad_000
+                   + non_interest_income_cad_000
+                   - non_interest_expense_cad_000))
+            <= 10
+          config:
+            severity: error
+            store_failures: true
+    columns:
+      - name: institution_key
+        tests:
+          - not_null
+      - name: institution_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_institution')
+              field: institution_id
+      - name: reporting_period_end
+        tests:
+          - not_null
+      - name: net_income_cad_000
+        description: >
+          OSFI line item 1109 ("Net income") does not exist in P3 before
+          2011 -- see docs/known_data_issues.md. The not_null test below is
+          scoped to periods where the code exists, so it still catches a
+          genuine future regression.
+        tests:
+          - not_null:
+              config:
+                where: "reporting_period_end >= '2011-01-01'"

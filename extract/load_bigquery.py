@@ -56,7 +56,11 @@ load_dotenv()
 PROJECT = os.environ["GCP_PROJECT_ID"]
 TABLE = f"{PROJECT}.osfi_raw.filings"
 RAW = Path("data/raw")
-OSFI_RETURN_CODES = {"M4", "P3", "E3"}
+# M4_FBB: foreign bank branches, a separate OSFI-published population used
+# only by REC-007 (industry-total tie-out). Same M4 schema shape, distinct
+# filer population and row-count baseline -- see extract/schema.yml and
+# docs/known_data_issues.md.
+OSFI_RETURN_CODES = {"M4", "P3", "E3", "M4_FBB"}
 
 
 def latest_meta_per_return() -> list[dict]:

@@ -211,3 +211,166 @@ published) requires ingesting the foreign bank branches dataset
 (`c6879faf-2bc7-4c84-999c-0626ae33ec84`) in addition to the Banks dataset,
 and must exclude bank subsidiaries of banks already counted elsewhere to
 avoid double-counting when reconciling to the published industry total.
+
+**Resolved in Phase 8.** The branches dataset (CKAN `c6879faf-...`)
+publishes its own M4 file with the same schema shape as the main Banks
+dataset (same load-bearing columns; only a non-consumed label column's
+wording differs), plus two more OSFI aggregate pseudo-institutions:
+`1000006` ("Total Foreign Bank Branches - Lending") and `1000007` ("Total
+Foreign Bank Branches - Full Service"). The package's own published notes
+confirm OSFI's totals already exclude subsidiary-of-subsidiary double-
+counting ("Industry Totals do not include data reported by Banks that are
+subsidiaries of other Banks, since this data is already accounted for in
+the consolidated data reported by the parent banks"), so no separate
+exclusion logic was needed -- using OSFI's own published aggregates
+directly inherits it. Landed as return_code `M4_FBB` (`extract/
+osfi_extract.py`, `extract/schema.yml` -- its own row-count baseline,
+verified natural-key-unique, profiled the same way the original three
+returns were in Phase 2), flowing through the existing snapshot/staging
+pipeline unmodified (partition keys already include `source_return_code`,
+so it doesn't collide with domestic M4). `int_filings__industry_totals.sql`
+pivots the five aggregate rows; `tests/
+rec_007_industry_total_ties_to_published.sql` checks
+`1000000 = 1000001 + 1000002 + 1000006 + 1000007` within materiality
+tolerance. Verified: exact zero variance across all 67 scoped periods,
+including the most recent (partial) month -- OSFI's own totals are
+internally consistent regardless of period completeness.
+
+---
+
+## P3 line item 1109 ("Net income") does not exist before 2011
+
+**Found:** Phase 8, first `dbt test` run against `fct_income_statement`.
+`not_null` on `net_income_cad_000` failed with exactly 360 rows — every
+single Big-Six row from 1996-01-31 through 2010-12-31 (24 rows/year x 15
+years), zero failures from 2011-01-31 onward.
+
+**Investigated as a possible bug first:** checked whether the `is_primary_basis`
+variant filter was dropping a real row (it wasn't — every raw
+`(institution_id, reporting_period_raw)` group for code `1109` has exactly
+one primary-marked row, zero orphaned non-primary groups), and whether the
+FYE-based calendar-date join was silently excluding pre-2011 rows for this
+code only (it wasn't — `net_income_before_tax_cad_000` (code `1285`) and
+`interest_income_total_cad_000` (code `8252`) are both populated for the
+identical 1996-2010 rows, proving the pivot mechanics and FYE mapping work
+correctly for that era; only code `1109` itself is absent from the raw P3
+data before 2011-01-31).
+
+**Decision:** This is a real characteristic of the P3 return, not a pipeline
+bug — OSFI introduced a distinct "Net income" line item (code `1109`) into
+P3 starting in fiscal 2011; before that, only `1285` ("net income before
+tax") was reported at this granularity. The `not_null` test on
+`net_income_cad_000` in `_finance__models.yml` is scoped with
+`where: "reporting_period_end >= '2011-01-01'"` rather than dropped, so it
+still catches a genuine future regression within the era the code exists.
+
+---
+
+## M4 line-item codes changed around 2008-2009; scope narrowed to a 5-year window
+
+**Found:** Phase 8, REC-001 (balance sheet identity) first run. 1,712 of
+3,533 rows failed, with variances up to ~$214B on a single institution-
+period, concentrated entirely in 1996-2008 and shrinking to near-zero by
+2011-2012.
+
+**Investigated as a possible bug first:** confirmed OSFI's own direct
+combined total (code `2230`, "total liabilities and shareholders' equity")
+is complete across the full 30-year history and always equals total assets
+(code `1045`) exactly — so the pivot mechanics and FYE mapping are correct.
+The gap traced to 8 of the 12 deposit codes (`0873`-`0881` etc.) our
+liability rollup sums having **zero rows** in the raw data before ~2009 —
+OSFI restructured M4's deposit detail codes around that time, the same
+pattern later confirmed for P3's `1109` code (see previous entry).
+
+**Decision:** Rather than chase down 15-20-year-old retired code numbers
+(open-ended, possibly unrecoverable), applied the scope this project was
+always meant to have: `docs/project_structure.md`'s "Land full history;
+scope via config, not extraction" entry already specified a trailing-window
+dbt var filter in staging, which had never actually been wired up.
+`vars.scope_years` (default 5) now filters `stg_osfi__filings` on the
+shared leading-year prefix in both M4's and P3/E3's period representations.
+Landing zone and snapshot are unaffected — full history stays there;
+widening scope later is a var change, not a re-extraction. All incremental
+mart tables (`fct_balance_sheet`, `fct_income_statement`) required one
+`--full-refresh` to purge now-out-of-scope rows, since narrowing a staging
+filter does not retroactively remove rows from an already-populated
+incremental table.
+
+---
+
+## P3/E3 granular detail-line codes are essentially unfiled in current-era data
+
+**Found:** Phase 8, REC-002 (subtotal rollup) first run against P3 and E3.
+5,731 P3 failures, 3,778 E3 failures.
+
+**Investigated as a possible hierarchy-seed bug first:** cross-checked every
+failing parent code's declared children in `seed_line_item_hierarchy.csv`
+against OSFI's own Validation Rules XLSX (`P3_validation_rules.xlsx`,
+`E3_validation_rules.xlsx`) for M4, P3, and E3. M4's hierarchy matched
+exactly and passes cleanly. Most of P3/E3's declared child-code lists also
+matched the authoritative formulas exactly (e.g. E3's `IR30`:
+`3302 = 3303 + 3304 + 3306 + 3309`) — so the codes themselves were not
+wrong. Direct query confirmed the real cause: most of those declared child
+codes have **zero rows anywhere** in the loaded data (e.g. P3 code `8407`'s
+6 declared children — only `8402` and the `8407` total itself are ever
+filed; E3 code `3302`'s 4 declared children — only `3303`, credit cards,
+is ever filed). Modern OSFI filers report the summary rollup directly and
+do not populate the granular detail breakdown OSFI's schema still
+nominally supports.
+
+**Decision:** REC-002 is scoped to M4 only (`_filings__models.yml`), where
+it is fully meaningful and passes cleanly. Not extended to P3/E3 — a
+"require every declared child present" variant was considered and rejected,
+since it would evaluate ~0 real groups for most P3/E3 parents and create an
+illusion of coverage that isn't real.
+
+## REC-004 and REC-005 cannot be implemented against current-era data
+
+**Found:** Phase 8, building REC-004 (retained earnings continuity) and
+REC-005 (cross-return net income tie-out).
+
+**Investigated:** REC-004 needs dividends-declared figures (P3 codes `1495`
+preferred, `1496` common, per validation rule `IR195`). REC-005's most
+direct real analog is validation rule `P3M402`, which ties P3's own
+retained-earnings-end-of-period (`1498`) to M4's retained earnings (`2225`)
+for the same period -- there is no "net income" line item inside M4's
+equity section at all (confirmed during the Phase 7 code-mapping work), so
+a literal reading of REC-005's description has no real M4 counterpart to
+check against regardless. Direct query confirmed P3's entire Section III
+(codes `1493`-`1498`, everything `IR195`/`P3M402` need) has **zero rows
+anywhere** in the loaded, scoped data -- not a mapping gap, not a stale
+flag like the earlier P3/E3 findings, genuinely never filed by any
+institution in scope. A broader search for any populated "dividend"-labeled
+code across all three returns found only interest/dividend *income received*
+on securities held (an asset-side revenue line), never dividends *declared*
+to shareholders.
+
+**Decision:** Not implemented. An approximation was considered --
+`retained_earnings(t) ≈ retained_earnings(t-1) + net_income(t)`, dropping
+the dividends term -- and rejected: every real, profitable, dividend-paying
+institution (i.e. every Big Six bank, every quarter) would systematically
+overshoot this identity by roughly its dividend payment, producing constant
+false failures that are a modeling gap, not a real reconciliation break. A
+control that reliably cries wolf is worse than no control -- it trains
+whoever reviews `rpt_control_scorecard` to ignore it. REC-003 (income
+statement rollforward) ships instead, fully viable since all four inputs it
+needs are populated across every scoped row. REC-004/REC-005 remain in
+`seed_control_registry.csv` (registered) but have no corresponding test --
+`fct_control_results` will show them absent from a given run's results
+rather than fabricating a pass or fail with no real check behind it.
+
+---
+
+**Separately, a genuine hierarchy bug was found and fixed** along the way:
+codes `1109` (net income) and `1168` (comprehensive income) were double-
+counted, because OSFI validates each of them via **two independent,
+already-complete partitions** (`1109`: `IR202` = before-discontinued +
+discontinued, *and* `IR203` = non-controlling + equity-holders; `1168`:
+`IR197` = net income + OCI, *and* `IR200` = equity-holders + non-controlling),
+and the seed had flattened both partitions into one child list per parent —
+summing all of them double-counts the true total exactly 2x. Fixed by
+keeping only one canonical partition as the declared children (`1109`:
+`1197` + `1292` per `IR203`; `1168`: `1158` + `1167` per `IR197`) and
+re-parenting the dropped codes (`1111`, `1112`, `1288`, `8652`) to no
+parent, with a note explaining why, so they remain in the hierarchy seed
+(satisfying the Phase 6 anti-join checkpoint) without being double-counted.

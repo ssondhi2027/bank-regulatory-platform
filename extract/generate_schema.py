@@ -78,6 +78,20 @@ COLUMN_ROLES: dict[str, dict] = {
         "label": "Data Point Address Label",
         "return_title": "Return Title",
     },
+    # Foreign bank branches -- a separate OSFI-published population (REC-007
+    # only; see docs/known_data_issues.md). Same load-bearing column names
+    # as M4 (Id, dates, Data Point Address, Measure Value all match
+    # byte-for-byte); only the "Total All Banks..." label column's wording
+    # differs, and that column is non-consumed. A distinct return_code
+    # because it is a different filer population with its own row-count
+    # baseline, not a duplicate of domestic M4.
+    "M4_FBB": {
+        "natural_key": ["Id", "Calendar Year/Année civile", "Calendar Month/Mois civil",
+                        "Data Point Address/Adresse de point de donnée", "variant_seq"],
+        "amount": "Measure Value/Valeur de mesure",
+        "label": "Data Point Address Label",
+        "return_title": "Return Title",
+    },
 }
 
 # Row-count floor tolerance: fail if a future file has fewer rows than

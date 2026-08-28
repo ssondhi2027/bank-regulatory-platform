@@ -536,3 +536,171 @@ returns:
       - Data Point Address/Adresse de point de donnée
       return_title_column: Return Title
       label_column: Data Point Address Label
+  M4_FBB:
+    source_file: 224f60bc32d91ba930350a926330cb213ff5ed059b586eb82130432ff87c739a.csv
+    encoding: utf-8
+    row_count_baseline: 626113
+    row_count_floor: 594807
+    column_count: 15
+    natural_key:
+      columns:
+      - Id
+      - Calendar Year/Année civile
+      - Calendar Month/Mois civil
+      - Data Point Address/Adresse de point de donnée
+      - variant_seq
+      verified_unique: true
+      null_key_rows: 0
+    amount:
+      column: Measure Value/Valeur de mesure
+      units: thousands_cad
+      implicit_units: true
+      known_non_numeric_tokens: []
+      null_rate: 0.0
+      min: -464565217.0
+      max: 10547168607.0
+      has_negatives: true
+    columns:
+    - name: Calendar Year/Année civile
+      normalized: calendar_year_annee_civile
+      position: 0
+      dtype: integer
+      nullable: false
+      distinct_count: 31
+      consumed: true
+    - name: Calendar Month/Mois civil
+      normalized: calendar_month_mois_civil
+      position: 1
+      dtype: date
+      nullable: false
+      distinct_count: 367
+      consumed: true
+    - name: Id
+      normalized: id
+      position: 2
+      dtype: integer
+      nullable: false
+      distinct_count: 50
+      consumed: true
+    - name: Total FBBs/Total Industry Groups/FIs
+      normalized: total_fbbs_total_industry_groups_fis
+      position: 3
+      dtype: string
+      nullable: false
+      distinct_count: 65
+      consumed: false
+    - name: Total les SBE/Total des groupe sectoriel/IFFs
+      normalized: total_les_sbe_total_des_groupe_sectoriel_iffs
+      position: 4
+      dtype: string
+      nullable: false
+      distinct_count: 65
+      consumed: false
+    - name: Industry Group
+      normalized: industry_group
+      position: 5
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - All Banks
+      - Foreign Bank Branches - Full Service
+      - Foreign Bank Branches - Lending
+    - name: Groupe Sectoriel
+      normalized: groupe_sectoriel
+      position: 6
+      dtype: string
+      nullable: false
+      distinct_count: 3
+      consumed: false
+      allowed_values:
+      - Succursale de banques étrangères - de prêt
+      - Succursale de banques étrangères - à services complets
+      - Toutes les banques
+    - name: Return/Relevé
+      normalized: return_releve
+      position: 7
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - M4
+    - name: Return Title
+      normalized: return_title
+      position: 8
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: true
+      allowed_values:
+      - M4 - Consolidated Balance Sheet
+    - name: Titre du relevé
+      normalized: titre_du_releve
+      position: 9
+      dtype: string
+      nullable: false
+      distinct_count: 1
+      consumed: false
+      allowed_values:
+      - M4 - Bilan consolidé
+    - name: Data Point Address/Adresse de point de donnée
+      normalized: data_point_address_adresse_de_point_de_donnee
+      position: 10
+      dtype: integer
+      nullable: false
+      distinct_count: 290
+      consumed: true
+    - name: Data Point Address Label
+      normalized: data_point_address_label
+      position: 11
+      dtype: string
+      nullable: false
+      distinct_count: 338
+      consumed: true
+    - name: Libellé de l'adresse du point de données
+      normalized: libelle_de_l_adresse_du_point_de_donnees
+      position: 12
+      dtype: string
+      nullable: false
+      distinct_count: 338
+      consumed: false
+    - name: FI Inactive Date/Date d'inactivité IFF
+      normalized: fi_inactive_date_date_d_inactivite_iff
+      position: 13
+      dtype: date
+      nullable: false
+      distinct_count: 5
+      consumed: false
+      allowed_values:
+      - '2011-09-30'
+      - '2015-05-30'
+      - '2016-06-24'
+      - '2021-01-30'
+      - '9999-12-31'
+    - name: Measure Value/Valeur de mesure
+      normalized: measure_value_valeur_de_mesure
+      position: 14
+      dtype: numeric
+      nullable: false
+      distinct_count: 194311
+      consumed: true
+    - name: variant_seq
+      normalized: variant_seq
+      position: null
+      dtype: integer
+      nullable: false
+      distinct_count: null
+      consumed: false
+      derived: true
+      derivation: row_number() over (partition by institution_id, return_code, reporting_period_end, line_item_code
+        order by return_title, data_point_label_as_filed) - 1
+    variant_ordering:
+      base_key:
+      - Id
+      - Calendar Year/Année civile
+      - Calendar Month/Mois civil
+      - Data Point Address/Adresse de point de donnée
+      return_title_column: Return Title
+      label_column: Data Point Address Label

@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: audit
+    database: "{{ env_var('GCP_PROJECT_ID') }}"
+    schema: "{{ target.schema }}_audit"
+    description: >
+      Written by macros/log_dbt_results.sql's on-run-end hook, not by dbt
+      itself -- the underlying table is created out-of-band (a raw INSERT
+      cannot create its own table). One row per test outcome per
+      invocation.
+    tables:
+      - name: dbt_test_log
+        description: One row per test per dbt invocation.
+        columns:
+          - name: invocation_id
+          - name: test_name
+          - name: status
+          - name: failure_count
+          - name: execution_seconds
+          - name: logged_at

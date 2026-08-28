@@ -5,11 +5,22 @@
 -- lives. Thin layer: renaming to expose the snapshot's own bookkeeping
 -- columns under clearer names, and casting the one column that needs it
 -- (amount_cad_000, string -> numeric, so downstream models can do
--- arithmetic) -- no filtering, no business logic.
+-- arithmetic).
+--
+-- One filter does happen here, deliberately: a trailing scope_years window
+-- on reporting_period_raw's leading 4-digit year. Both M4's "YYYY-MM-DD"
+-- and P3/E3's "YYYY-Qn - YYYY" period representations start with the
+-- calendar/fiscal year, so this one regex works for all three returns.
+-- This is a scope decision, not a data-loss one: the landing zone and
+-- snapshot both retain full history; widening scope later only requires
+-- bumping the var, never re-extracting. See docs/known_data_issues.md for
+-- why staying inside this window matters (OSFI line-item code churn).
 
 with source as (
 
     select * from {{ ref('snap_osfi_filings') }}
+    where cast(regexp_extract(reporting_period_raw, r'^(\d{4})') as int64)
+          >= extract(year from current_date) - {{ var('scope_years') }}
 
 )
 

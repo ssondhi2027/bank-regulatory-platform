@@ -36,11 +36,14 @@ sources:
           - name: id
             description: OSFI institution ID, or a pseudo-ID for aggregate rows (1000000/1000001/1000002 = Total All Banks / Total Domestic Banks / Total Foreign Bank Subsidiaries).
           - name: source_return_code
-            description: M4, P3, or E3.
+            description: >
+              M4, P3, or E3 for the main Banks dataset; M4_FBB for the
+              separate Foreign Bank Branches dataset (REC-007 only -- see
+              docs/known_data_issues.md).
             tests:
               - accepted_values:
                   arguments:
-                    values: ["M4", "P3", "E3"]
+                    values: ["M4", "P3", "E3", "M4_FBB"]
           - name: calendar_year_annee_civile
             description: M4 only. Calendar year.
           - name: calendar_month_mois_civil

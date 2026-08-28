@@ -13,6 +13,18 @@ vars:
   as_of_ts: null                 # override for point-in-time reconstruction
   materiality_threshold_cad_000: 1
   peer_group_default: 'BIG_SIX'
+  # Trailing window, in whole years, applied in staging -- not at extraction.
+  # OSFI has changed M4/P3 line-item codes over its 30-year history (e.g.
+  # P3's net-income code 1109 didn't exist before 2011; M4's deposit detail
+  # codes 0873-0881 didn't exist before ~2009), so code lists derived from
+  # a current-era Validation Rules XLSX don't reconcile against older
+  # filings. Scoping here keeps the landing zone/snapshot holding full
+  # history (nothing is deleted) while marts stay inside the era our code
+  # mappings are actually valid for. See docs/known_data_issues.md.
+  scope_years: 5
+
+on-run-end:
+  - "{{ log_dbt_results(results) }}"
 
 models:
   bank_regulatory_platform:
@@ -30,6 +42,8 @@ models:
         +schema: core
       finance:
         +schema: finance
+      controls:
+        +schema: controls
 
 seeds:
   bank_regulatory_platform:
@@ -51,6 +65,9 @@ seeds:
     seed_quarantine:
       +column_types:
         institution_id: string
+    seed_control_registry:
+      +column_types:
+        control_id: string
     seed_data_point_variants:
       # is_primary_basis and accounting_basis learned the same lesson the
       # hard way: without an explicit type, BigQuery's autodetect guessed

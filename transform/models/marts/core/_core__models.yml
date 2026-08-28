@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_institution
+    description: >
+      One row per institution in seed_institution_master. Not yet a true
+      SCD2 dimension -- see the model's own header comment.
+    columns:
+      - name: institution_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_reporting_period
+    description: Distinct reporting_period_end values across balance sheet and income statement.
+    columns:
+      - name: reporting_period_end
+        tests:
+          - unique
+          - not_null

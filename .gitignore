@@ -4,6 +4,7 @@
 !package.json
 !package-lock.json
 !**/dagster_home/**/*.json
+!transform/prod-manifest/manifest.json
 service_account*.json
 gcp-key*.json
 

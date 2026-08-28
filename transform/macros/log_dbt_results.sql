@@ -30,18 +30,25 @@
     {% set rows = [] %}
     {% for res in results %}
       {% if res.node.resource_type == 'test' %}
-        {#- SKIPPED tests (e.g. downstream of an upstream failure/error in
-            the same invocation) have failures=None and execution_time=None
-            -- `| default(0)` on failures already guarded that, but
-            execution_time had no such guard, so `None | round(3)` rendered
-            the bare word None into the SQL literal, breaking the insert
-            for the whole invocation (BigQuery: "Unrecognized name: None").
-            Found via a full `dbt build`, not caught by scoped --select
-            runs where nothing upstream had failed yet to produce a SKIP. -#}
+        {#- SKIPPED and ERRORED tests (e.g. a database error, or downstream
+            of an upstream failure in the same invocation) have
+            failures=None and/or execution_time=None -- a real Python None,
+            not Jinja Undefined. `| default(0)` alone only replaces
+            Undefined; it silently passes None straight through, which then
+            renders as the bare word `None` in the SQL literal and breaks
+            the whole insert (BigQuery: "Unrecognized name: None"). Needs
+            `| default(0, true)` -- the second arg tells Jinja to also
+            treat falsy/None values as needing the default, not just
+            Undefined ones. First discovered via a full `dbt build` (SKIP
+            case), thought fixed, then recurred via `--target ci` hitting a
+            real database error (ERROR case) -- `default(0)` without the
+            boolean looked like it worked because it happened to mask the
+            symptom for the specific case tested at the time, not because
+            the fix was actually correct. -#}
         {% do rows.append(
           "('" ~ invocation_id ~ "','" ~ res.node.name ~ "','"
-               ~ res.status ~ "'," ~ (res.failures | default(0)) ~ ","
-               ~ (res.execution_time | default(0) | round(3)) ~ ",current_timestamp())"
+               ~ res.status ~ "'," ~ (res.failures | default(0, true)) ~ ","
+               ~ (res.execution_time | default(0, true) | round(3)) ~ ",current_timestamp())"
         ) %}
       {% endif %}
     {% endfor %}

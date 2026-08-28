@@ -75,10 +75,10 @@ dagster dev                          # asset graph at localhost:3000
 
 ## Current phase
 
-Phase 8 complete (REC-001/002/003/007, CMP-001, log_dbt_results,
-fct_control_results, rpt_control_scorecard; REC-004/005 registered but not
-implemented -- see docs/known_data_issues.md). Phase 9 (orchestration and
-CI) not started.
+Phase 9 complete (daily_pipeline.yml, ci.yml, orchestration/definitions.py,
+service account + secrets documented in docs/ci_cd_setup.md). Neither
+workflow has run in real GitHub Actions yet -- needs the GitHub secrets
+created first, per docs/ci_cd_setup.md. Phase 10 (dashboards) not started.
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.

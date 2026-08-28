@@ -1,0 +1,55 @@
+name: daily-pipeline
+on:
+  schedule:
+    - cron: '0 11 * * *'  # 06:00-07:00 America/Toronto depending on DST
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      BQ_LOCATION: ${{ secrets.BQ_LOCATION }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - name: Auth to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Extract
+        run: |
+          python extract/osfi_extract.py
+          python extract/boc_extract.py
+
+      - name: Load
+        run: python extract/load_bigquery.py
+
+      - name: dbt deps
+        working-directory: transform
+        run: dbt deps
+
+      - name: Source freshness
+        working-directory: transform
+        run: dbt source freshness --target prod
+        continue-on-error: true  # freshness warnings shouldn't kill the run
+
+      - name: Snapshot then build
+        working-directory: transform
+        run: |
+          dbt snapshot --target prod
+          dbt build --target prod
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-artifacts
+          path: transform/target/

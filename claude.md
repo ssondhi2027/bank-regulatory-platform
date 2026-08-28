@@ -75,8 +75,10 @@ dagster dev                          # asset graph at localhost:3000
 
 ## Current phase
 
-Phase 7 complete (intermediate filings models, core dims, fct_balance_sheet,
-fct_income_statement). Phase 8 (control framework) not started.
+Phase 8 complete (REC-001/002/003/007, CMP-001, log_dbt_results,
+fct_control_results, rpt_control_scorecard; REC-004/005 registered but not
+implemented -- see docs/known_data_issues.md). Phase 9 (orchestration and
+CI) not started.
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.

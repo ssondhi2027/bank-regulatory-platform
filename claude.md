@@ -90,9 +90,14 @@ efficiency ratio/deposit-to-loan/allowance coverage all in
 fct_financial_metrics, verified against RBC's actual disclosures. No CAP
 return ingested, so no tier 1 capital ratio.
 
-Business dashboard itself (the NIM-vs-policy-rate chart, peer rankings)
-not yet built in dashboards/evidence -- the data is ready but the page
-isn't written. Power BI version not started -- needs manual GUI work in
+Business dashboard done too (dashboards/evidence/pages/business.md):
+indexed total assets, NIM vs. BoC policy rate (combo_chart, dual axis),
+deposit/loan mix by institution, allowance coverage trend, peer ranking
+with QoQ rank movement. All queries verified directly against BigQuery
+before assembling the page. Both Evidence dashboards (control scorecard +
+business) are done; only Power BI remains for Phase 10.
+
+Power BI version not started -- needs manual GUI work in
 Power BI Desktop, not automatable from here.
 (Update this line as you go. It's how Claude Code knows where we are.)
 

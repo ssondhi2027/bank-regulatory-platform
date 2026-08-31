@@ -374,3 +374,39 @@ keeping only one canonical partition as the declared children (`1109`:
 re-parenting the dropped codes (`1111`, `1112`, `1288`, `8652`) to no
 parent, with a note explaining why, so they remain in the hierarchy seed
 (satisfying the Phase 6 anti-join checkpoint) without being double-counted.
+
+---
+
+## fct_financial_metrics needs single-quarter figures, not P3's YTD figures
+
+**Found:** Building `fct_financial_metrics` (Phase 10). P3's income
+statement figures are year-to-date cumulative by convention (documented
+in `int_filings__income_statement_pivoted.sql` -- Q2 is Q1+Q2 combined,
+not Q2 alone). Computing NIM/ROA/ROE directly from those YTD figures would
+blend every earlier quarter of the same fiscal year into each later
+quarter's ratio -- not how these ratios are normally presented, and would
+look like a data quality bug to anyone comparing against a real bank's
+quarterly disclosures.
+
+**Decision:** Added `int_filings__income_statement_quarterly.sql`, which
+differences consecutive quarters within the same fiscal year (LAG,
+resetting at fiscal Q1 -- Q1's YTD figure already IS the single-quarter
+figure, nothing to subtract) before any ratio is computed.
+`fct_financial_metrics`'s NIM/ROA/ROE annualize (x4) the resulting
+single-quarter figure over the average of the current and prior period-end
+balance -- the standard convention real bank disclosures use, and what
+makes these comparable in scale to an annual-terms series like the BoC
+policy rate.
+
+**A related bug caught before it shipped**: the average-balance
+calculation initially used `lag()` directly over `fct_balance_sheet`,
+which is MONTHLY grain (M4 files every month) -- silently averaging
+against last MONTH's balance instead of last QUARTER's for every ratio.
+Fixed by filtering `fct_balance_sheet` down to only the periods that also
+have a quarterly income-statement filing before computing `lag()`, so
+"prior" means prior quarter.
+
+**Verified against reality, not just internally consistent**: computed
+NIM (~1.4-1.5%), ROE (~13-17%), and efficiency ratio (~52-60%) for RBC's
+recent quarters land squarely within the range of RBC's actual published
+quarterly disclosures for the same periods.

@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: boc_raw
+    database: "{{ env_var('GCP_PROJECT_ID') }}"
+    schema: boc_raw
+    description: >
+      Bank of Canada Valet observations, loaded as-is by
+      extract/load_boc_bigquery.py. The Valet API returns one JSON record
+      per date with sparse series keys (not every series publishes every
+      day -- confirmed by profiling: the policy rate target publishes
+      every calendar day including weekends, the three market series
+      (yields, FX) only on business days). Unpivoted to one row per
+      (series, date) actually observed. Every column lands as STRING; no
+      casting happens before staging.
+    config:
+      loaded_at_field: ingested_at
+      freshness:
+        # BoC publishes daily; much tighter SLA than OSFI's monthly/
+        # quarterly cadence.
+        warn_after: { count: 2, period: day }
+        error_after: { count: 5, period: day }
+    tables:
+      - name: valet_observations
+        description: One row per (series_id, obs_date) actually published.
+        config:
+          loaded_at_field: ingested_at
+        columns:
+          - name: series_id
+            description: >
+              Raw Bank of Canada Valet series code -- V39079 (target for
+              the overnight rate), BD.CDN.2YR.DQ.YLD / BD.CDN.10YR.DQ.YLD
+              (benchmark bond yields), FXCADUSD (CAD/USD daily average).
+              Confirmed live against the Valet series list before use
+              (extract/boc_extract.py), not guessed.
+            tests:
+              - accepted_values:
+                  arguments:
+                    values: ["V39079", "BD.CDN.2YR.DQ.YLD", "BD.CDN.10YR.DQ.YLD", "FXCADUSD"]
+          - name: obs_date
+            description: Observation date, YYYY-MM-DD text.
+            tests:
+              - not_null
+          - name: value
+            description: The observed value as published, text.
+            tests:
+              - not_null
+          - name: source_file_hash
+            description: Audit column. SHA-256 of the landed file.
+          - name: ingested_at
+            description: Audit column. When extract/boc_extract.py landed this file.

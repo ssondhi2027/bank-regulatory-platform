@@ -1,6 +1,33 @@
 version: 2
 
 models:
+  - name: fct_financial_metrics
+    description: >
+      One row per institution per (quarterly) reporting period -- grain
+      matches int_filings__income_statement_quarterly, since every ratio
+      here needs an income-statement flow figure and P3 only files
+      quarterly. net_interest_margin/return_on_assets/return_on_equity are
+      annualized (x4) single-quarter figures over average balances -- see
+      the model's own header comment for why.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - institution_id
+            - reporting_period_end
+    columns:
+      - name: institution_key
+        tests:
+          - not_null
+      - name: institution_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_institution')
+              field: institution_id
+      - name: reporting_period_end
+        tests:
+          - not_null
+
   - name: fct_balance_sheet
     description: >
       One row per institution per reporting period. Incremental on

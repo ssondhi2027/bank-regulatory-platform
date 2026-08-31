@@ -30,7 +30,9 @@ jobs:
           python extract/boc_extract.py
 
       - name: Load
-        run: python extract/load_bigquery.py
+        run: |
+          python extract/load_bigquery.py
+          python extract/load_boc_bigquery.py
 
       - name: dbt deps
         working-directory: transform

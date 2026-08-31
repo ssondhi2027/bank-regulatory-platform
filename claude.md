@@ -78,10 +78,22 @@ dagster dev                          # asset graph at localhost:3000
 Phase 10 in progress: control scorecard dashboard done
 (dashboards/evidence, pages/home.md -- pass rate trend, breach detail,
 source freshness vs SLA, restatement frequency by institution, all
-verified against real BigQuery data). Business dashboard not started --
-blocked on the deferred BoC rates / fct_financial_metrics work (see Phase
-7 notes). Power BI version not started -- needs manual GUI work in Power
-BI Desktop, not automatable from here.
+verified against real BigQuery data).
+
+BoC rates + fct_financial_metrics now built (previously deferred from
+Phase 7): extract/load_boc_bigquery.py loads Valet observations into
+boc_raw; stg_boc__rate_observations -> int_rates__period_aligned
+(period-end + trailing 3-month average per series); a new
+int_filings__income_statement_quarterly de-cumulates P3's YTD figures into
+true single-quarter figures (see docs/known_data_issues.md); NIM/ROA/ROE/
+efficiency ratio/deposit-to-loan/allowance coverage all in
+fct_financial_metrics, verified against RBC's actual disclosures. No CAP
+return ingested, so no tier 1 capital ratio.
+
+Business dashboard itself (the NIM-vs-policy-rate chart, peer rankings)
+not yet built in dashboards/evidence -- the data is ready but the page
+isn't written. Power BI version not started -- needs manual GUI work in
+Power BI Desktop, not automatable from here.
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.

@@ -24,9 +24,9 @@ dagster-shared==1.13.20
 dagster-webserver==1.13.20
 db-dtypes==1.7.1
 dbt-adapters==1.24.5
-dbt-bigquery==1.12.0
+dbt-bigquery==1.11.3
 dbt-common==1.38.0
-dbt-core==1.12.0
+dbt-core==1.11.14
 dbt-core-experimental-parser==2.0.0a5
 dbt-extractor==0.6.0
 dbt-protos==1.0.541
@@ -86,7 +86,7 @@ msgpack==1.2.1
 multidict==6.7.1
 nbformat==5.10.4
 networkx==3.6.1
-numpy==2.5.1
+numpy==2.4.6
 oauthlib==3.3.1
 orderly-set==5.5.0
 orjson==3.12.0

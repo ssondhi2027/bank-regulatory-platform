@@ -16,14 +16,25 @@ dagster.core -> dagster._core rename by years; import dagster_dbt failed
 outright). Fixed by upgrading the whole dagster-* family together
 (dagster-graphql/dagster-webserver track dagster's own version number;
 dagster-dbt/dagster-pandas use independent 0.x schemes and needed
-resolving separately). `pip check` still reports dagster-dbt 0.29.20
-wanting dbt-core<1.12 -- verified empirically that this is a conservative/
-not-yet-bumped upper bound, not a real break: `dagster asset list -m
-orchestration.definitions` resolves the full asset graph (all dbt models
-plus the 3 Python assets) against dbt-core 1.12.0, which is what every
-prior phase's checkpoints were run and verified against. Downgrading
-dbt-core to satisfy the declared constraint was considered and rejected --
-it would put those verified checkpoints in question for no observed gain.
+resolving separately).
+
+dbt-core/dbt-bigquery are pinned to 1.11.x, not 1.12.0 -- initially kept
+at 1.12.0 after verifying `dagster asset list` worked fine despite
+dagster-dbt 0.29.20's declared `dbt-core<1.12` upper bound (judged
+conservative, not a real break, and not worth revisiting the checkpoints
+already run against 1.12.0 for no observed gain). That held for every
+INCREMENTAL local `pip install X==version` I ran, which don't fully
+re-resolve the whole graph -- but it does not hold for a one-shot `pip
+install -r requirements.txt` from a clean environment, which is exactly
+what every GitHub Actions workflow does: pip's resolver treats the
+declared conflict as a hard `ResolutionImpossible`, not a warning, when
+resolving the full requirements file at once. Found by actually building a
+fresh Python 3.11 venv (matching the workflows' `python-version: '3.11'`)
+and running the real install, not by inspecting version numbers. Confirmed
+after downgrading: full `dbt build` still 57/57 green, and this asset
+graph still resolves -- and it's a strictly more correct state than
+before, since 1.11.14 actually satisfies dagster-dbt's declared
+constraint instead of merely getting away with violating it.
 """
 
 from __future__ import annotations

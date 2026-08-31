@@ -110,14 +110,14 @@ pydantic==2.13.4
 pydantic_core==2.46.4
 pydata-google-auth==1.9.1
 Pygments==2.20.0
-pyreadline3==3.5.6
+pyreadline3==3.5.6 ; sys_platform == "win32"
 pytest==9.1.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.2
 python-slugify==8.0.4
 pytimeparse==1.1.8
 pytz==2026.3.post1
-pywin32==312
+pywin32==312 ; sys_platform == "win32"
 PyYAML==6.0.3
 RapidFuzz==3.14.5
 referencing==0.37.0

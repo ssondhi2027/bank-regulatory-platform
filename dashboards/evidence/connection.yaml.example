@@ -1,0 +1,10 @@
+type: bigquery
+project: bank-regulatory-platform
+keyfile: /absolute/path/to/your/service-account-key.json
+location: northamerica-northeast1
+dataset: controls
+datasets:
+  - controls
+  - intermediate
+  - core
+  - finance

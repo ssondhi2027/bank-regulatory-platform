@@ -103,8 +103,16 @@ restatement proof, a control registry table generated from the actual
 seed file with honest implemented/not-implemented status per row, a real
 "problems I hit" section mined from docs/known_data_issues.md, known
 limitations), plus .github/workflows/docs.yml publishing dbt docs to
-GitHub Pages on push to main (untested in real Actions -- same secrets
-gap as daily_pipeline.yml/ci.yml, see docs/ci_cd_setup.md).
+GitHub Pages on push to main -- now verified GREEN in real GitHub
+Actions, live at https://ssondhi2027.github.io/bank-regulatory-platform/.
+Getting there required fixing three real bugs invisible from local dev:
+numpy 2.5 needing Python >=3.12 (workflows/CLAUDE.md target 3.11, local
+.venv had silently drifted to 3.12), pywin32/pyreadline3 being
+Windows-only packages `pip freeze` captured without platform markers, and
+GitHub Pages needing to be enabled in repo settings. All documented in
+docs/ci_cd_setup.md and README.md's Known limitations. ci.yml/
+daily_pipeline.yml share the same secrets/auth/pip-install path that's
+now proven working, but haven't run via a real PR/workflow_dispatch yet.
 
 Phase 12 done: docs/interview_prep.md -- 90-second and 5-minute answers to
 the build guide's 5 questions, grounded entirely in real facts/numbers

@@ -93,10 +93,28 @@ but a stale baseline does weaken what CI actually proves.
 
 ## Checkpoint
 
-Verified locally (not yet in real GitHub Actions, since that needs the
-secrets above): a deliberately broken control (`REC-001`'s tolerance
-expression changed to an always-false condition) was picked up by
-`state:modified+` -- exactly 1 test selected out of 44 -- and failed with
-shell exit code 1. Reverted immediately after. Once the secrets exist,
-opening a PR with the same kind of change should produce a red check on
-GitHub for the same reason.
+The three GitHub secrets have been created, and `docs.yml` has run for
+real in GitHub Actions and gone green -- confirming the whole chain works:
+`GCP_SA_KEY` authenticates, `GCP_PROJECT_ID`/`BQ_LOCATION` are wired
+correctly, `pip install -r requirements.txt` succeeds on the Ubuntu
+runner, and `dbt docs generate --target prod` reaches BigQuery. Live at
+https://ssondhi2027.github.io/bank-regulatory-platform/.
+
+Getting there took three real fixes, none visible from local development
+alone (see `docs/known_data_issues.md` and the commit history for detail
+on each): a Python 3.11 vs. numpy 2.5's Python ≥3.12 requirement (the
+local dev `.venv` had silently drifted to 3.12, masking it); two
+Windows-only packages (`pywin32`, `pyreadline3`) that `pip freeze` on a
+Windows machine captures without the platform markers that would let pip
+skip them on Linux; and GitHub Pages needing to be explicitly enabled
+(Settings -> Pages -> Source: GitHub Actions) before `deploy-pages` could
+publish anything.
+
+`ci.yml`'s and `daily_pipeline.yml`'s logic is verified locally (a
+deliberately broken control was picked up by `state:modified+` -- exactly
+1 test selected out of 44 -- and failed with shell exit code 1, reverted
+immediately after) but neither has actually run via a real PR or
+`workflow_dispatch` yet. Since they share the same secrets, GCP auth
+step, and `pip install -r requirements.txt` that `docs.yml` now proves
+works, the remaining risk is narrower than it was -- mainly the
+extract/load/snapshot steps specific to those two workflows.

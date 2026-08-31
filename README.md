@@ -11,9 +11,9 @@ control scorecard at `dashboards/evidence/pages/home.md`, business dashboard
 at `dashboards/evidence/pages/business.md`. Run `evidence dev` from
 `dashboards/evidence/` to view them.
 
-**dbt docs**: generated on every push to `main` via
-`.github/workflows/docs.yml`, published to GitHub Pages once the repo's
-Pages settings are pointed at the `github-pages` deployment environment.
+**dbt docs**: generated and published to GitHub Pages on every push to
+`main` via `.github/workflows/docs.yml` —
+**[live here](https://ssondhi2027.github.io/bank-regulatory-platform/)**.
 
 ---
 
@@ -317,12 +317,27 @@ using OSFI's own published aggregates directly inherits it.
   gives a demoable asset lineage graph via `dagster dev`, while
   `daily_pipeline.yml` is what would actually run a production schedule.
   Explained, not hidden.
-- **Neither GitHub Actions workflow has run in real CI yet.** They need
-  the service account and GitHub secrets described in
-  `docs/ci_cd_setup.md`, which hasn't been done. Verified locally instead:
-  a deliberately broken control was picked up by slim CI's
-  `state:modified+` selection and failed with exit code 1; reverted
-  immediately after.
+- **`daily_pipeline.yml` and `ci.yml` haven't run against a real
+  `workflow_dispatch`/PR yet** — `docs.yml` has (see below), which
+  exercises the same secrets and GCP auth path, but not the extract/load/
+  snapshot steps specific to the other two. Verified locally instead for
+  `ci.yml`'s logic specifically: a deliberately broken control was picked
+  up by slim CI's `state:modified+` selection and failed with exit code 1;
+  reverted immediately after.
+- **Getting `docs.yml` green in real GitHub Actions surfaced three more
+  real bugs**, none visible from local development: `numpy==2.5.1`
+  requires Python ≥3.12, but every workflow (and the project's declared
+  stack) targets 3.11 — my local `.venv` had silently drifted to 3.12,
+  masking it; `pywin32`/`pyreadline3` are Windows-only packages that ended
+  up in `requirements.txt` from a `pip freeze` on this Windows dev
+  machine, which don't exist on the Ubuntu runners CI uses; and GitHub
+  Pages itself needed enabling in the repo's own settings before
+  `deploy-pages` could publish anything; none of the three were
+  discoverable without actually running the workflow for real, which is
+  the entire reason to bother running it. All three fixed and verified —
+  `docs.yml` is green, publishing to
+  [`ssondhi2027.github.io/bank-regulatory-platform`](https://ssondhi2027.github.io/bank-regulatory-platform/)
+  on every push to `main`.
 - **Power BI version not built.** The build guide calls for both Evidence
   and Power BI versions of the dashboards; only Evidence is done. Power BI
   Desktop is a GUI-only tool that can't be driven from this environment.

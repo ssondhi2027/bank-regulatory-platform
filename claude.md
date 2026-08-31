@@ -95,10 +95,18 @@ indexed total assets, NIM vs. BoC policy rate (combo_chart, dual axis),
 deposit/loan mix by institution, allowance coverage trend, peer ranking
 with QoQ rank movement. All queries verified directly against BigQuery
 before assembling the page. Both Evidence dashboards (control scorecard +
-business) are done; only Power BI remains for Phase 10.
+business) are done. Power BI version explicitly skipped (GUI-only tool,
+not automatable) -- decided in conversation, not forgotten.
 
-Power BI version not started -- needs manual GUI work in
-Power BI Desktop, not automatable from here.
+Phase 11 done: README.md (architecture + ERD as Mermaid diagrams, the
+restatement proof, a control registry table generated from the actual
+seed file with honest implemented/not-implemented status per row, a real
+"problems I hit" section mined from docs/known_data_issues.md, known
+limitations), plus .github/workflows/docs.yml publishing dbt docs to
+GitHub Pages on push to main (untested in real Actions -- same secrets
+gap as daily_pipeline.yml/ci.yml, see docs/ci_cd_setup.md).
+
+Phase 12 (interview prep) not started.
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.

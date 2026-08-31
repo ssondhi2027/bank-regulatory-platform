@@ -106,7 +106,17 @@ limitations), plus .github/workflows/docs.yml publishing dbt docs to
 GitHub Pages on push to main (untested in real Actions -- same secrets
 gap as daily_pipeline.yml/ci.yml, see docs/ci_cd_setup.md).
 
-Phase 12 (interview prep) not started.
+Phase 12 done: docs/interview_prep.md -- 90-second and 5-minute answers to
+the build guide's 5 questions, grounded entirely in real facts/numbers
+from this project (nothing generic/invented). The remaining work -- the
+actual out-loud rehearsal, and letting the daily extractor run long enough
+to catch a genuine OSFI restatement rather than the simulated one -- is
+the user's, not something further build work accomplishes.
+
+All 12 phases now have at least a first pass. Open items across the
+project: Power BI dashboard, GitHub Actions secrets/service account setup
+(docs/ci_cd_setup.md), and the controls registered-but-not-implemented in
+Phase 8 (REC-004/005/006, CMP-002/003/004, most of VAL-*/TML-*/PLA-*).
 (Update this line as you go. It's how Claude Code knows where we are.)
 
 Read CLAUDE.md, docs/PROJECT_STRUCTURE.md, and docs/BUILD_GUIDE.md.
